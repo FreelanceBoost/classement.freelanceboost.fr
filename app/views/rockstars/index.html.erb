@@ -1,0 +1,14 @@
+<h1>Freelance les plus influents sur Twitter</h1>
+<p>Si vous aussi vous êtes freelance, rendez-vous tout en bas nous soumettre votre pseudo Twitter</p>
+
+<% if !@rockstars.blank? %>
+  <% for item in @rockstars %>
+    <%= item.pseudo %>
+  <% end %>
+<% else %>
+  Il n'y a aucun freelance pour le moment, soyez le premier :) !?
+<% end %>
+
+<%= form_tag("/rockstars") do %>
+<%= text_field_tag :pseudo %>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pseudo: MyString
+  desc: MyText
+  url_img: MyText
+  rank: 1
+
+two:
+  pseudo: MyString
+  desc: MyText
+  url_img: MyText
+  rank: 1

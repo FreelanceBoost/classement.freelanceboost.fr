@@ -1,0 +1,7 @@
+<% if !@rockstars.blank? %>
+  <% for item in @rockstars %>
+    <%= item.pseudo %>
+  <% end %>
+<% else %>
+  Il n'y a aucun freelance pour le moment, soyez le premier :) !?
+<% end %>

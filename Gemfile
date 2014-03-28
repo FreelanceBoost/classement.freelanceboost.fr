@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'newrelic_rpm'
 
-gem 'twitter'
+gem 'twitter', '5.8.0'
 
 gem 'rails_12factor'
 
@@ -46,6 +46,9 @@ end
 group :development, :test do
   gem 'sqlite3'
 end
+
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -4,12 +4,12 @@
 <% if !@rockstars.blank? %>
   <% for item in @rockstars %>	
 	<div id="rockstar-<%= item.pseudo %>">
-		<img class="avatar" src="<%= item.url_img %>">
+		<img class="avatar lazy" src="<%= item.url_img %>">
 		<a href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
 			<strong class="name"><%= item.name %></strong>
-			<small class="pseudo">@<%= item.pseudo %></em></small> 
+			@<%= item.pseudo %>
 		</a>
-		
+		<em><%= item.location %></em>
 		<p class="bio"><%= item.desc %></p>
 	</div>
   <% end %>

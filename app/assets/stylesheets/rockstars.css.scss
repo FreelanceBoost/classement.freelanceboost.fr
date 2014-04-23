@@ -1,3 +1,44 @@
-// Place all the styles related to the rockstars controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "foundation_and_overrides";
+
+@font-face{
+	font-family: 'BebasNeue';
+	src: url('/assets/BebasNeue-webfont.woff') format('woff');
+}
+
+$padding: 7px;
+
+body{
+	line-height: 1.4;
+	font-family: "Helvetica Neue", Helvetica;
+}
+
+h1 {
+	font-family: 'BebasNeue';
+}
+
+.main {
+	padding: $padding;
+}
+
+.avatar {				
+	border-radius: 50%;
+	float: left;
+}
+
+@media only screen and (max-width: 800px) {
+
+$padding: 10px;
+$middle: 40%;
+
+	.main {
+		padding: $padding;
+		text-align: center;		
+	}
+
+	.avatar {				
+		float: none;
+		display: block;
+		position: relative;
+		left: $middle;
+	}
+}

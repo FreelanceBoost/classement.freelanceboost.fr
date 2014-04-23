@@ -1,22 +1,36 @@
-<h1>Les freelances les plus influents sur Twitter</h1>
-<p>Si vous aussi vous êtes freelance, rendez-vous tout en bas nous soumettre votre pseudo Twitter</p>
+<h1>Freelances influents sur Twitter</h1>
+<p>Vous êtes freelance ? Rendez-vous <a href="#pseudo-form">tout en bas</a> pour nous soumettre votre pseudo Twitter</p>
 
 <% if !@rockstars.blank? %>
-  <% for item in @rockstars %>	
-	<div id="rockstar-<%= item.pseudo %>">
+<% for item in @rockstars %>	
+<div id="rockstar-<%= item.pseudo %>">
+	
+	<a href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
 		<img class="avatar lazy" src="<%= item.url_img %>">
-		<a href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
-			<strong class="name"><%= item.name %></strong>
-			@<%= item.pseudo %>
-		</a>
-		<em><%= item.location %></em>
-		<p class="bio"><%= item.desc %></p>
-	</div>
-  <% end %>
+		<strong class="name"><%= item.name %></strong>
+		@<%= item.pseudo %>
+	</a>
+	<i><%= item.location %></i>
+	<p class="bio"><%= item.desc %></p>
+</div>
+<% end %>
 <% else %>
- Il n'y a aucun freelance pour le moment, soyez le premier :) !?
+Il n'y a aucun freelance pour le moment, soyez le premier :) !?
 <% end %>
 
 <%= form_tag("/rockstars") do %>
- <%= text_field_tag :pseudo %>
+
+<div id="pseudo-form" class="row">
+    <div class="large-6 columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <%= text_field_tag :pseudo, nil, placeholder: "Votre @Pseudo Twitter" %>
+        </div>
+        <div class="small-2 columns">
+			<button type="submit" class="button postfix">Ok</button>
+        </div>
+      </div>
+    </div>    
+    </div>
+
 <% end %>

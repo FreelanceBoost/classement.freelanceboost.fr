@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Freelance Boost Rank</title>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag    "application" %>
+	<%= javascript_include_tag "vendor/modernizr" %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+		<!--[if lte IE 8]>
+		<div class="wrap cf">
+			<div class="alert alert-danger mb-none">Your browser is <em>ancient!</em> You can experience a better web if you <a href="http://browsehappy.com/">upgrade to a modern browser</a>.</div>
+		</div>
+		<![endif]-->
 
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
-<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+		<div class="row large-8 main">
+			<%= yield %>
+		</div>
+		
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+		<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
 </body>
 </html>

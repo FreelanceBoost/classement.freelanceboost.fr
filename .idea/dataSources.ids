@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails freelanceboost-ranking: development" uuid="5eb58a37-d99e-48fd-aece-a5532898491e">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails freelanceboost-ranking: test" uuid="fbea49ec-79f8-467a-a789-659142ff69ff">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails freelanceboost-ranking: production" uuid="293f7b26-f1dd-42d3-be76-ba1e9c693c81">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

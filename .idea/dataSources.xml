@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="1104793048">
+    <data-source source="LOCAL" name="Rails freelanceboost-ranking: development" uuid="5eb58a37-d99e-48fd-aece-a5532898491e">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails freelanceboost-ranking: test" uuid="fbea49ec-79f8-467a-a789-659142ff69ff">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/test.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails freelanceboost-ranking: production" uuid="293f7b26-f1dd-42d3-be76-ba1e9c693c81">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-54-217-230-100.eu-west-1.compute.amazonaws.com:5432/d9fl4uqp1vqk9b</jdbc-url>
+      <user-name>ezrqixkgmkrkat</user-name>
+      <user-password>dfefdf99dfeedffbdff0dfffdfeddfc1dfc4dfe6dfcedfe7dff2dff3dffedfecdfc8dfd2dfccdfe9df87dfc6dff2dff0dfe9df9e</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

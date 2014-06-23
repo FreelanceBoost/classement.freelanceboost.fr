@@ -44,4 +44,7 @@ end
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+gem 'safe_attributes'
+
 ruby '2.1.1'
+

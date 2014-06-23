@@ -18,6 +18,7 @@ h1 {
 
 .main {
 	padding: $padding;
+	max-width: 800px;
 }
 
 .avatar {				
@@ -25,14 +26,32 @@ h1 {
 	float: left;
 }
 
+.container-avatar{
+	padding-right: 5px;
+}
+
+.rockstar{
+	padding-bottom: 10px;
+}
+
+.link-freelance{
+	padding-right: 2px;
+	padding-left: 27px;
+}
+
+.bio{
+	padding-left: 100px;
+}
+
 @media only screen and (max-width: 800px) {
 
-$padding: 10px;
-$middle: 40%;
+	$padding: 10px;
+	$middle: 40%;
 
 	.main {
 		padding: $padding;
-		text-align: center;		
+		text-align: center;	
+		overflow: hidden;	
 	}
 
 	.avatar {				
@@ -40,5 +59,12 @@ $middle: 40%;
 		display: block;
 		position: relative;
 		left: $middle;
+	}
+	.link-freelance{		
+		padding-left: 0;
+	}
+
+	.bio{
+		padding-left: 0;
 	}
 }

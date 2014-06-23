@@ -1,18 +1,28 @@
 <h1>Freelances influents sur Twitter</h1>
-<p>Vous êtes freelance ? Rendez-vous <a href="#pseudo-form">tout en bas</a> pour nous soumettre votre pseudo Twitter</p>
+<p>Vous êtes freelance ? Alors rendez-vous <a href="#pseudo-form">tout en bas</a> pour nous soumettre votre pseudo Twitter</p>
 
 <% if !@rockstars.blank? %>
 <% for item in @rockstars %>	
-<div id="rockstar-<%= item.pseudo %>">
-	
-	<a href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
-		<img class="avatar lazy" src="<%= item.url_img %>">
-		<strong class="name"><%= item.name %></strong>
-		@<%= item.pseudo %>
-	</a>
-	<i><%= item.location %></i>
-	<p class="bio"><%= item.desc %></p>
-</div>
+  <div class="rockstar" id="rockstar-<%= item.pseudo %>">
+   <div class="container-avatar">
+    <img class="avatar lazy" src="<%= item.url_img %>">
+  </div>    
+  <div class="rockstar-description">
+    <a class="link-freelance" href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
+
+     <strong class="name"><%= item.name %></strong>
+     @<%= item.pseudo %>
+
+   </a>
+
+   <small class="location"><%= item.location %></small>
+
+   <p class="bio"><%= item.desc %></p>
+  </div>
+
+
+  </div>
+
 <% end %>
 <% else %>
 Il n'y a aucun freelance pour le moment, soyez le premier :) !?
@@ -21,16 +31,16 @@ Il n'y a aucun freelance pour le moment, soyez le premier :) !?
 <%= form_tag("/rockstars") do %>
 
 <div id="pseudo-form" class="row">
-    <div class="large-6 columns">
-      <div class="row collapse">
-        <div class="small-10 columns">
-          <%= text_field_tag :pseudo, nil, placeholder: "Votre @Pseudo Twitter" %>
-        </div>
-        <div class="small-2 columns">
-			<button type="submit" class="button postfix">Ok</button>
-        </div>
+  <div class="large-12 columns">
+    <div class="row collapse">
+      <div class="small-10 large-10 medium-10 columns">
+        <%= text_field_tag :pseudo, nil, placeholder: "Votre @Pseudo Twitter" %>
       </div>
-    </div>    
-    </div>
+      <div class="small-2 large-2 medium-2 columns">
+       <button type="submit" class="button postfix">Ok</button>
+     </div>
+   </div>
+ </div>    
+</div>
 
 <% end %>

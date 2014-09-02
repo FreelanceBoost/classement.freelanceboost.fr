@@ -3,13 +3,14 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Freelance Boost Rank</title>
+	<title>FreelanceBoost | Ranking Freelances Twitter</title>
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	<%= stylesheet_link_tag    "application" %>
 	<%= javascript_include_tag "vendor/modernizr" %>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>		
 	<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 	<%= csrf_meta_tags %>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
 		<!--[if lte IE 8]>
@@ -18,7 +19,7 @@
 		</div>
 		<![endif]-->
 
-		<div class="row large-8 main">
+		<div class="row main">
 			<%= yield %>
 		</div>				
 </body>

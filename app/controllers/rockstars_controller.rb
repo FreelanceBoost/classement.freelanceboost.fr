@@ -34,7 +34,6 @@ class RockstarsController < ApplicationController
       :desc => user.description,
       :name => user.name,
       :location => user.location)
-    
   end
 
 end

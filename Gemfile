@@ -26,8 +26,6 @@ gem 'newrelic_rpm'
 
 gem 'twitter', '5.8.0'
 
-gem 'rails_12factor'
-
 gem 'haml-rails'
 
 group :doc do

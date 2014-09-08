@@ -28,6 +28,12 @@ gem 'twitter', '5.8.0'
 
 gem 'haml-rails'
 
+gem 'rails_12factor'
+
+group :production, :staging do
+  gem 'sprockets-redirect'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end

@@ -13,17 +13,88 @@
 
 $padding: 7px;
 
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+	display: block;
+}
+
 body {
+	margin: 0;
 	font-weight: 300;
-	line-height: 1.4;
-	font-family: 'Open Sans';
+	line-height: 1.5;
+	font-size: 1em;
+	font-family: 'Open Sans' !important;
+}
+
+img {
+	border: 0;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: #2cb974;
+	text-decoration: none;
+	font-weight: bold;
+	transition: all .2s linear;
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+}
+
+.header-logo {
+	max-width: 158px;
+	margin: 20px 0;
+	float: left;
+}
+
+.l-nav a {
+	display: inline-block;
+	font-size: 25px;
+	padding: 25px 15px 15px;
+	font-family: 'Big Noodle Titling';
+	text-transform: uppercase;
+	color: #000;
+	border-bottom: solid 3px #fff;
+	font-weight: 300;
+}
+
+.l-header {
+	overflow: hidden;
+	background-color: #fff;
+	box-shadow: 0 2px 5px rgba(0,0,0,.1);
+	width: 100%;
+	z-index: 1000000;
+	position: relative;
+}
+
+.l-constrained-small {
+	max-width: 800px;
+}
+
+.l-constrained {
+	max-width: 1180px;
+}
+
+.l-constrained, .l-constrained-small {
+	margin: auto;
+	padding: 0 20px;
+}
+
+.l-intro {		
 	background-color: #2cb974;
 	color: #fff;
 	text-align: center;
 	padding: 87px 0 60px;
-}
-
-.l-intro {		
 	h1 {
 		font-family: 'Big Noodle Titling';
 		font-size: 98px;
@@ -32,24 +103,90 @@ body {
 		margin: 0;
 		color: #fff;
 	}
-	p {
-		font-size: 27px;
-		margin: 0 0 2em;
-		line-height: 1.3;
+}
+
+.l-adding {
+	background-color: #2cb974;
+	color: #fff;
+	text-align: center;
+	padding: 87px 0 60px;	
+	h2 {
+		font-family: 'Big Noodle Titling';
+		font-size: auto;
+		font-weight: 300;
+		line-height: .9;
+		margin: 0;
+		margin-bottom: 90px;
+		color: #fff;
 	}
 }
 
+@media (max-width: 1000px){
+	.l-nav {
+		float: inherit;
+		text-align: center;
+	}
+}
 
-.main {
-	padding: $padding;
-	max-width: 1000px;	
+.l-nav {
+	float: right;
+}
+
+.l-rockstar {
+	min-height: 500px;
+}
+
+.header-social {
+	float: right;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 0 1em;
+	a {
+		height: 80px;
+		font-size: 30px;
+		width: 30px;
+		text-align: center;
+		display: block;
+		line-height: 80px;
+		color: #fff;
+		padding: 0 20px;
+		&.header-social-facebook {
+			background-color: #47639e;
+			&:hover {
+				background-color: #345290;
+			}
+		}
+		&.header-social-twitter {
+			background-color: #00c4e7;
+			&:hover {
+				background-color: #04b5d4;
+			}
+		}
+		&.header-social-googleplus {
+			background-color: #d6492f;
+			&:hover {
+				background-color: #c3351b;
+			}
+		}
+		
+	}
+	li {
+		display: inline-block;
+	}
+}
+.row {
+	max-width: 100% !important;
+}
+.main {	
+	text-align: center;	
 	input[type="text"] {
-		width: 100%;
+		width: 110%;
+		height: 89px;
 		box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		padding: 35px;
 		border: none;
-		font-size: 1.5em;
+		font-size: 1.3em;
 		font-weight: light;
 		color: #777;
 		border: solid 2px rgba(57,57,57,.16);
@@ -64,8 +201,7 @@ body {
 	}
 	button[type="submit"] {
 		display: inline-block;
-		font-size: 1.5em;
-		right: -2px;
+		font-size: 1.4em;		
 		padding: 1em;
 		position: absolute;
 		color: #fff;
@@ -79,9 +215,15 @@ body {
 		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
 		cursor: pointer;
 		-webkit-appearance: none;
-		height: 100%;
+		width: auto;
+		height: 89px;
+		right: 0px;
 	}
-
+	.centered {
+		margin-left: auto;
+		margin-right: auto;
+		float: none !important;	
+	}	
 }
 
 .avatar {				
@@ -106,14 +248,66 @@ body {
 	padding-left: 100px;
 }
 
+.footer-social {
+	list-style: none;
+	margin: 0 0 1em;
+	padding: 0;
+	
+}
+.footer-social li {
+	display: inline-block;
+}
+.footer-nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.l-footer {
+	text-align: center;
+	color: #888;
+	padding: 4em 0;
+	background-color: #fff;
+	box-shadow: 0 -2px 5px rgba(0,0,0,.1);
+	position: relative;
+	z-index: 1;
+	.footer-gplus {
+		position: relative;
+		top: 6px;
+		left: 16px;
+		display: inline-block;
+	}
+}
+.footer-nav li {
+	display: inline-block;
+	margin: 0 .5em;
+}
+.footer-nav li a {
+	color: #999;
+}
+.footer-block {
+	padding: 2em 0 0;
+	margin: 2em 0 0;
+	border-top: solid 1px #eee;
+}
+.l-footer .twitter-share-button {
+	position: relative;
+	top: 6px;
+	width: 106px !important;
+}
+.fb_iframe_widget {
+	display: inline-block;
+	position: relative;
+}
+.l-footer a:hover {
+	text-decoration: underline;
+}
 @media only screen and (max-width: 800px) {
 
 	$padding: 10px;
 	$middle: 40%;
 
 	.main {
-		padding: $padding;
-		text-align: center;	
+		
 		overflow: hidden;	
 	}
 

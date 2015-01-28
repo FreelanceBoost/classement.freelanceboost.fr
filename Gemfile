@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 group :production, :staging do
- # gem "pg"
+  gem "pg"
 end
 
 gem 'foundation-rails', '5.2.2.0'

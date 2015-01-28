@@ -86,6 +86,7 @@ GEM
     formatador (0.2.4)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
+    google-analytics-rails (0.0.6)
     guard (2.6.0)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -107,6 +108,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
+    htmlcompressor (0.1.2)
     http (0.5.0)
       http_parser.rb
     http_parser.rb (0.6.0)
@@ -249,8 +251,10 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   coffee-rails (~> 4.0.0)
+  google-analytics-rails
   guard-livereload
   haml-rails
+  htmlcompressor (~> 0.1.1)
   jbuilder (~> 1.2)
   jquery-rails
   newrelic_rpm

@@ -34,7 +34,7 @@
     <h2>Si vous êtes freelance ajoutez votre pseudo Twitter ci-dessous</h2>
     <%= form_tag("/rockstars") do %>
       <div id="pseudo-form" style="position:relative">            
-              <%= text_field_tag :pseudo, nil, placeholder: "Votre pseudo twitter" %>
+              <input id="pseudo" name="pseudo" placeholder="Votre pseudo twitter" type="text">
               <button type="submit" class="button postfix">Ok</button> 
       </div>
     <% end %>  

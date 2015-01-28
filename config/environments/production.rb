@@ -79,4 +79,27 @@ FreelanceboostRanking::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   GA.tracker = "UA-44249774-3"
+
+  options = {
+    :enabled => true,
+    :remove_multi_spaces => true,
+    :remove_comments => true,
+    :remove_intertag_spaces => false,
+    :remove_quotes => true,
+    :compress_css => false,
+    :compress_javascript => false,
+    :simple_doctype => false,
+    :remove_script_attributes => true,
+    :remove_style_attributes => true,
+    :remove_link_attributes => true,
+    :remove_form_attributes => false,
+    :remove_input_attributes => true,
+    :remove_javascript_protocol => true,
+    :remove_http_protocol => true,
+    :remove_https_protocol => false,
+    :preserve_line_breaks => false,
+    :simple_boolean_attributes => true
+}
+config.middleware.use HtmlCompressor::Rack, options
+
 end

@@ -4,6 +4,18 @@
 </div>  
 </section>
 
+<section class="l-adding main">
+  <div class="l-constrained-small">
+    <h2>Si vous êtes freelance ajoutez votre pseudo Twitter ci-dessous</h2>
+    <%= form_tag("/rockstars") do %>
+      <div id="pseudo-form" style="position:relative">                  
+        <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo twitter" >
+        <button type="submit" class="button postfix">Ok</button> 
+      </div>
+    <% end %>  
+  </div>  
+</section>
+
 <section class="l-rockstar">
   <div class="l-constrained-small centered">
     <% if !@rockstars.blank? %>
@@ -29,14 +41,3 @@
   </div>  
 </section>
 
-<section class="l-adding main">
-  <div class="l-constrained-small">
-    <h2>Si vous êtes freelance ajoutez votre pseudo Twitter ci-dessous</h2>
-    <%= form_tag("/rockstars") do %>
-      <div id="pseudo-form" style="position:relative">                  
-        <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo twitter" >
-        <button type="submit" class="button postfix">Ok</button> 
-      </div>
-    <% end %>  
-  </div>  
-</section>

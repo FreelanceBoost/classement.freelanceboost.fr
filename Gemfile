@@ -32,6 +32,8 @@ gem 'rails_12factor'
 
 gem 'htmlcompressor', '~> 0.1.1'
 
+gem 'unicorn'
+
 group :production, :staging do
   gem 'sprockets-redirect'
 end

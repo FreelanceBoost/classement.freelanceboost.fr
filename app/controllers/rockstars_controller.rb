@@ -1,11 +1,12 @@
 class RockstarsController < ApplicationController
 
   def index
-      @rockstars = Rockstar.all.order('follower_count DESC').limit(100)
+      @rockstars = Rockstar.where(rank: 1)
+      .limit(100)
+      .order('follower_count')      
   end
 
   def create
-
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = "tpUNsQuMvR1Lp3c469loTn6IR"
       config.consumer_secret     = "x5d898RLATY9skNE0JqOc2sE4TzD0w6hPDcz2RXLhcvZSTgTZr"
@@ -26,7 +27,7 @@ class RockstarsController < ApplicationController
     @location = user.location
     @verified = user.verified
     @retweet_count = client.search("rt " + params[:pseudo]).count
-    @rank = (@tweet_count + @listed_count * 2 + @follower_count * 2) / 5 - (@friends_count + @retweet_count * 2) / 3
+    @rank = 0
 
     puts user
     rockstar = Rockstar.find_by pseudo: params[:pseudo].gsub('@','')

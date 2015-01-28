@@ -28,16 +28,16 @@ class RockstarsController < ApplicationController
     @retweet_count = client.search("rt " + params[:pseudo]).count
     @rank = (@tweet_count + @listed_count * 2 + @follower_count * 2) / 5 - (@friends_count + @retweet_count * 2) / 3
 
-    user = Rockstar.find_by pseudo: params[:pseudo].gsub('@','')
-    if !user
-      Rockstar.create(:pseudo => params[:pseudo].gsub('@',''))
+    rockstar = Rockstar.find_by pseudo: params[:pseudo].gsub('@','')
+    if !rockstar
+      rockstar = Rockstar.create(:pseudo => params[:pseudo].gsub('@',''))
     end
-    user.rank = @rank,
-    user.url_img = @img_url
-    user.desc = user.description
-    user.name = user.name
-    user.location = user.location
-    user.follower_count = @follower_count
+    rockstar.rank = @rank
+    rockstar.url_img = @img_url
+    rockstar.desc = user.description
+    rockstar.name = user.name
+    rockstar.location = user.location
+    rockstar.follower_count = user.followers_count
   end
 
 end

@@ -6,8 +6,6 @@ group :production, :staging do
   gem "pg"
 end
 
-gem 'foundation-rails', '5.2.2.0'
-
 gem 'sass-rails', '~> 4.0.2'
 
 gem 'uglifier', '>= 1.3.0'

@@ -50,5 +50,5 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'safe_attributes'
 
-ruby '2.1.1'
+ruby '2.0.0'
 

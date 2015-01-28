@@ -306,22 +306,19 @@ a {
 	$padding: 10px;
 	$middle: 40%;
 
-	.main {
-		
+	.main {		
 		overflow: hidden;	
 	}
-
 	.avatar {				
 		float: none;
 		display: block;
 		position: relative;
 		left: $middle;
 	}
-	.link-freelance{		
+	.link-freelance {
 		padding-left: 0;
 	}
-
-	.bio{
+	.bio {
 		padding-left: 0;
 	}
-}	
+}

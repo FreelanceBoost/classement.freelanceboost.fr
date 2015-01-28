@@ -1,19 +1,8 @@
 <section class="l-intro">
   <div class="l-constrained-small centered">
-    <h1>Les 100 freelances francophones les plus influents sur Twitter</h1>  
+    <h1>Les 100 freelances francophones<br> les plus influents sur Twitter</h1>  
 </div>  
 </section>
-  <footer class="l-footer">
-    <div class="l-constrained">
-      <div class="footer-share">
-        <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1409790579.html#_=1410268970551&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=fr&amp;original_referer=http%3A%2F%2Ffreelanceboost.fr%2F&amp;size=m&amp;text=Recevez%20chaque%20semaine%20un%20conseil%20pour%20lancer%20ou%20d%C3%A9velopper%20votre%20activit%C3%A9%20de%20%23freelance&amp;url=http%3A%2F%2Fclassemment.freelanceboost.fr&amp;via=freelanceboost" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 119px; height: 20px;"></iframe>
-        <script>
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-        </script>       
-        </div>
-      </div>
-    </div>
-  </footer>
 
 <section class="l-rockstar">
   <div class="l-constrained-small centered">
@@ -40,21 +29,13 @@
   </div>  
 </section>
 
-<section class="l-adding">
+<section class="l-adding main">
   <div class="l-constrained-small">
     <h2>Si vous êtes freelance ajoutez votre pseudo Twitter ci-dessous</h2>
     <%= form_tag("/rockstars") do %>
-      <div id="pseudo-form" class="row">
-        <div class="large-7 columns centered">
-          <div class="row collapse">
-            <div class="small-10 large-10 medium-10 columns">
+      <div id="pseudo-form" style="position:relative">            
               <%= text_field_tag :pseudo, nil, placeholder: "Votre pseudo twitter" %>
-            </div>
-            <div class="small-2 large-2 medium-2 columns">
-              <button type="submit" class="button postfix">Ok</button>
-            </div>
-          </div>
-        </div>    
+              <button type="submit" class="button postfix">Ok</button> 
       </div>
     <% end %>  
   </div>  

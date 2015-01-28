@@ -1,7 +1,7 @@
 class RockstarsController < ApplicationController
 
   def index
-      @rockstars = Rockstar.all.order('follower_count DESC')
+      @rockstars = Rockstar.all.order('follower_count DESC').limit(100)
   end
 
   def create

@@ -26,7 +26,11 @@ gem 'twitter', '5.8.0'
 
 gem 'haml-rails'
 
+gem 'google-analytics-rails'
+
 gem 'rails_12factor'
+
+gem 'htmlcompressor', '~> 0.1.1'
 
 group :production, :staging do
   gem 'sprockets-redirect'

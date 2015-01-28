@@ -97,7 +97,7 @@ a {
 	padding: 87px 0 60px;
 	h1 {
 		font-family: 'Big Noodle Titling';
-		font-size: 98px;
+		font-size: 68px;
 		font-weight: 300;
 		line-height: .9;
 		margin: 0;
@@ -106,18 +106,16 @@ a {
 }
 
 .l-adding {
-	background-color: #2cb974;
-	color: #fff;
+	border-top: solid 1px #eee;
 	text-align: center;
-	padding: 87px 0 60px;	
+	padding: 60px 0;	
 	h2 {
 		font-family: 'Big Noodle Titling';
 		font-size: auto;
 		font-weight: 300;
 		line-height: .9;
 		margin: 0;
-		margin-bottom: 90px;
-		color: #fff;
+		margin-bottom: 20px;
 	}
 }
 
@@ -130,10 +128,6 @@ a {
 
 .l-nav {
 	float: right;
-}
-
-.l-rockstar {
-	min-height: 500px;
 }
 
 .header-social {
@@ -228,11 +222,30 @@ a {
 
 .avatar {				
 	border-radius: 50%;
-	float: left;
+	opacity: .6;
 }
 
 .container-avatar{
 	padding-right: 5px;
+	position: relative;
+	float: left;
+
+	a {
+		display: block;
+		background: #000;
+		border-radius: 50%;
+	}
+}
+
+.container-avatar-index {
+	position: absolute;
+	width: 73px;
+	text-align: center;
+	top: 11px;
+	left: 0;
+	font-size: 35px;
+	color: #fff;
+	text-shadow: 0 0 14px #000;
 }
 
 .rockstar{
@@ -246,6 +259,9 @@ a {
 
 .bio{
 	padding-left: 100px;
+}
+.followers {
+	font-size: 30px;
 }
 
 .footer-social {
@@ -297,9 +313,17 @@ a {
 .fb_iframe_widget {
 	display: inline-block;
 	position: relative;
+	top: 6px;
+	margin-left: 5px;
 }
 .l-footer a:hover {
 	text-decoration: underline;
+}
+.l-rockstar {
+	padding: 0 0 40px;
+}
+.rockstar-description {
+	text-align: left;
 }
 @media only screen and (max-width: 800px) {
 
@@ -308,17 +332,5 @@ a {
 
 	.main {		
 		overflow: hidden;	
-	}
-	.avatar {				
-		float: none;
-		display: block;
-		position: relative;
-		left: $middle;
-	}
-	.link-freelance {
-		padding-left: 0;
-	}
-	.bio {
-		padding-left: 0;
 	}
 }

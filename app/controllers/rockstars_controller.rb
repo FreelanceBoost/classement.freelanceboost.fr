@@ -34,7 +34,9 @@ class RockstarsController < ApplicationController
       :url_img => @img_url,
       :desc => user.description,
       :name => user.name,
-      :location => user.location)
+      :location => user.location,
+      :follower_count => @follower_count
+      )
   end
 
 end

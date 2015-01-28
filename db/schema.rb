@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623155322) do
+ActiveRecord::Schema.define(version: 20150128113513) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140623155322) do
     t.string   "location"
     t.boolean  "valid"
     t.boolean  "good"
+    t.integer  "follower_count"
   end
 
 end

@@ -3,7 +3,7 @@ class RockstarsController < ApplicationController
   def index
       @rockstars = Rockstar.where(rank: 1)
       .limit(100)
-      .order('follower_count')      
+      .order('follower_count DESC')      
   end
 
   def create

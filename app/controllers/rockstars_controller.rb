@@ -32,12 +32,6 @@ class RockstarsController < ApplicationController
       if user
         update_or_create(user, rockstar.rank, rockstar.pseudo)
       end      
-    end
-    respond_to do |format|
-        format.html
-        format.json {
-          render :json => {status: "ok"}, :status => 200
-        }
     end    
   end
 

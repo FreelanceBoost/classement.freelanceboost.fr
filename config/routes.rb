@@ -3,4 +3,5 @@ FreelanceboostRanking::Application.routes.draw do
   ActiveAdmin.routes(self)
   root 'rockstars#index'
   resources :rockstars
+  get 'update' => 'rockstars#update'
 end

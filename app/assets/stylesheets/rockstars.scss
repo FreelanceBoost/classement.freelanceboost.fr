@@ -12,12 +12,15 @@
 $padding: 7px;
 
 [id^=rockstar-]{	
-	opacity: 1;	
-	transition: all 1s ease-out;
+	opacity: 1;
 }
 
 [id^=rockstar-].hide {
 	opacity: 0;
+  	-webkit-transition: all 1s ease-out;
+    -moz-transition: all 1s ease-out;
+    -o-transition: all 1s ease-out;
+    -ms-transition: all 1s ease-out;
   	transition: all 1s ease-out;
 }
 

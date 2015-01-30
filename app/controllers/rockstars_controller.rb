@@ -6,7 +6,7 @@ class RockstarsController < ApplicationController
       respond_to do |format|
         format.html
         format.json {
-          render :json => rockstars
+          render :json => @rockstars
         }
       end
   end

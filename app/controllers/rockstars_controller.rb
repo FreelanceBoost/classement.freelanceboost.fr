@@ -27,8 +27,8 @@ class RockstarsController < ApplicationController
     rockstars = Rockstar.where(rank: 1).limit(200).order('follower_count DESC')
     client = twlient()
     today = Date.today
-    rockstars = rockstars[0,99] if today.mday % 2 == 0
-    rockstars = rockstars[100,199] if today.mday % 2 != 0
+    rockstars = rockstars[100,199] if today.mday % 2 == 0
+    rockstars = rockstars[0,99] if today.mday % 2 != 0
     rockstars.each do |rockstar|
       user = client.user(rockstar.pseudo)
       if user

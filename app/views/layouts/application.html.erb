@@ -11,16 +11,14 @@
 	<%= csrf_meta_tags %>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<%= analytics_init if Rails.env.production? %>
-  	<script src="//load.sumome.com/" data-sumo-site-id="a4ccc88e31ec75718c5f2c7b96eab0b33bcd4282adc1caff6dcdd81ba61f4595" async></script>
+  <script src="//load.sumome.com/" data-sumo-site-id="a4ccc88e31ec75718c5f2c7b96eab0b33bcd4282adc1caff6dcdd81ba61f4595" async></script>
 </head>
 <body>
 	<div class="row main">
 		<%= yield %>
 	</div>
   <footer class="l-footer">
-        <p>Tous droits réservés <a href="http://freelanceboost.fr/">FreelanceBoost</a></p>
-      </div>
-    </div>
+    <p>Tous droits réservés <a href="http://freelanceboost.fr/">FreelanceBoost</a></p>
   </footer>
 </body>
 </html>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302103844) do
+ActiveRecord::Schema.define(version: 20150302140124) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20150302103844) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "dribblers", force: true do |t|
+    t.string   "bio",             limit: 512
+    t.string   "name",            limit: 256
+    t.integer  "followers_count"
+    t.string   "location",        limit: 256
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "rank"
+    t.integer  "followers"
+    t.string   "picture",         limit: 256
+    t.string   "username",        limit: 256
+  end
 
   create_table "rockstars", force: true do |t|
     t.string   "pseudo"

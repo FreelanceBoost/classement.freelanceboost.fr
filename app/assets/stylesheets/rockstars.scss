@@ -1,3 +1,5 @@
+@import 'ionicons';
+
 @font-face {
     font-family: 'Big Noodle Titling';
     src: url('/assets/big_noodle_titling-webfont.eot');
@@ -11,7 +13,7 @@
 
 $padding: 7px;
 
-[id^=rockstar-]{	
+[id^=rockstar-]{
 	opacity: 1;
 	height: 100%;
 	-webkit-transition: all 1.5s ease-out;
@@ -111,14 +113,14 @@ a {
 	padding: 0 20px;
 }
 
-.l-intro {		
+.l-intro {
 	background-color: #2cb974;
 	color: #fff;
 	text-align: center;
 	padding: 87px 0 60px;
 	h1 {
 		font-family: 'Big Noodle Titling';
-		font-size: 68px;
+		font-size: 66px;
 		font-weight: 300;
 		line-height: .9;
 		margin: 0;
@@ -129,7 +131,7 @@ a {
 .l-adding {
 	border-top: solid 1px #eee;
 	text-align: center;
-	padding: 60px 0;	
+	padding: 60px 0;
 	h2 {
 		font-family: 'Big Noodle Titling';
 		font-size: auto;
@@ -183,7 +185,6 @@ a {
 				background-color: #c3351b;
 			}
 		}
-		
 	}
 	li {
 		display: inline-block;
@@ -192,8 +193,8 @@ a {
 .row {
 	max-width: 100% !important;
 }
-.main {	
-	text-align: center;	
+.main {
+	text-align: center;
 	input#pseudo {
 		width: 100%;
 		height: 89px;
@@ -216,7 +217,7 @@ a {
 	}
 	button[type="submit"] {
 		display: inline-block;
-		font-size: 1.4em;		
+		font-size: 1.4em;
 		padding: 1em;
 		position: absolute;
 		color: #fff;
@@ -238,14 +239,16 @@ a {
 	.centered {
 		margin-left: auto;
 		margin-right: auto;
-		float: none !important;	
-	}	
+		float: none !important;
+	}
 }
 
-.avatar {				
+.avatar {
 	border-radius: 50%;
 	opacity: .6;
 	display: block;
+	width: 73px;
+	height: 73px;
 }
 
 .container-avatar{
@@ -295,7 +298,7 @@ a {
 	background-color: #fff;
 	box-shadow: 0 -2px 5px rgba(0,0,0,.1);
 	position: relative;
-	z-index: 1;	
+	z-index: 1;
 }
 .footer-nav li {
 	display: inline-block;
@@ -330,12 +333,39 @@ a {
 .rockstar-description {
 	text-align: left;
 }
+.l-tabs{
+	text-align: left;
+	ul {
+		list-style: none;
+		background: white;
+		margin:0;
+		padding: 0;
+		li {
+			font-size: 1.2em;
+			display: inline-block;
+			padding: 15px;
+			width: 115px;
+			background: white;
+			color: #2cb974;
+			border-top: 10px solid white;
+			border-left: 10px solid white;
+			text-align: center;
+		 	a {
+				color: #2cb974;
+			}
+			&.is-active {
+				background: #2cb974;
+				color: white;
+			}
+		}
+	}
+}
 @media only screen and (max-width: 800px) {
 
 	$padding: 10px;
 	$middle: 40%;
 
-	.main {		
-		overflow: hidden;	
+	.main {
+		overflow: hidden;
 	}
 }

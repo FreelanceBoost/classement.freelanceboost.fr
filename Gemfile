@@ -34,6 +34,10 @@ gem 'htmlcompressor', '~> 0.1.1'
 
 gem 'unicorn'
 
+gem 'dribbble'
+
+gem 'ionicons-rails', '~> 2.0.0'
+
 group :production, :staging do
   gem 'sprockets-redirect'
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bio: MyString
+  name: MyString
+  followers_count: 1
+  location: MyString
+
+two:
+  bio: MyString
+  name: MyString
+  followers_count: 1
+  location: MyString

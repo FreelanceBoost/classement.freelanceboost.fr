@@ -2,7 +2,7 @@ require 'date'
 class RockstarsController < ApplicationController
 
   def index
-      @rockstars = Rockstar.where(rank: 1).limit(100).order('follower_count DESC')
+      @rockstars = Rockstar.where(rank: 1).limit(200).order('follower_count DESC')
       respond_to do |format|
         format.html
         format.json {
@@ -14,7 +14,7 @@ class RockstarsController < ApplicationController
   def create
     client = twlient()
 
-    user = client.user(params[:pseudo])    
+    user = client.user(params[:pseudo])
     if !user
       render :status => 200
     end
@@ -22,22 +22,19 @@ class RockstarsController < ApplicationController
   end
 
   def update
-    rockstars = Rockstar.where(rank: 1).limit(100).order('follower_count DESC') 
+    rockstars = Rockstar.where(rank: 1).limit(200).order('follower_count DESC')
     client = twlient()
-    today = Date.today
-    rockstars = rockstars[50,0] if today.mday % 2 == 0
-    rockstars = rockstars[0,50] if today.mday % 2 != 0
     rockstars.each do |rockstar|
-      user = client.user(rockstar.pseudo)    
+      user = client.user(rockstar.pseudo)
       if user
         update_or_create(user, rockstar.rank, rockstar.pseudo)
-      end      
-    end    
+      end
+    end
   end
 
   protected
 
-  def twlient 
+  def twlient
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = "tpUNsQuMvR1Lp3c469loTn6IR"
       config.consumer_secret     = "x5d898RLATY9skNE0JqOc2sE4TzD0w6hPDcz2RXLhcvZSTgTZr"
@@ -47,7 +44,7 @@ class RockstarsController < ApplicationController
     client
   end
 
-  def update_or_create(user, rank, pseudo)    
+  def update_or_create(user, rank, pseudo)
     @follower_count = user.followers_count
     @tweet_count = user.tweets_count
     @friends_count = user.friends_count
@@ -58,7 +55,7 @@ class RockstarsController < ApplicationController
     @screen_name = user.screen_name
     @name = user.name
     @location = user.location
-    @verified = user.verified    
+    @verified = user.verified
     @rank = rank
 
     pseudo = pseudo.gsub('@','')

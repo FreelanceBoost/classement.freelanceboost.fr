@@ -43,7 +43,8 @@ group :doc do
 end
 
 group :development do
-  gem 'guard-livereload', require: false
+  gem 'guard-livereload'
+  gem "rack-livereload"
 end
 
 group :development, :test do
@@ -55,4 +56,3 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'safe_attributes'
 
 ruby '2.0.0'
-

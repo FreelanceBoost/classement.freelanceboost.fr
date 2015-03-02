@@ -2,7 +2,9 @@ require 'date'
 class RockstarsController < ApplicationController
 
   def index
-      @rockstars = Rockstar.where(rank: 1).limit(200).order('follower_count DESC')
+      @rockstars = Rails.cache.fetch('rockstars', :expires_in => 1.hours) do
+        Rockstar.where(rank: 1).limit(200).order('follower_count DESC')
+      end
       respond_to do |format|
         format.html
         format.json {

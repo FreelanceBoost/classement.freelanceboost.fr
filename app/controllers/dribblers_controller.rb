@@ -1,7 +1,8 @@
 class DribblersController < ApplicationController
 
   def index
-    @dribblers=Dribbler.where(rank: 1).limit(100).order('followers DESC')
+    @dribblers = Dribbler.where(rank: 1).limit(100).order('followers DESC')
+    @title = "Les #{@dribblers.size} freelances francophones les plus suivis sur Dribbble"
     respond_to do |format|
       format.html
       format.json {

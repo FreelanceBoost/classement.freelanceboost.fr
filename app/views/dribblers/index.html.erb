@@ -7,7 +7,7 @@
 
 <section class="l-intro">
   <div class="l-constrained-small centered">
-    <h1>Les 100 freelances francophones<br> les plus suivis sur Dribbble</h1>
+    <h1><%= @title %></h1>
   </div>
 </section>
 
@@ -38,7 +38,7 @@
      <i class="icon ion-social-dribbble"></i> <%= item.username %>
    </a>
    <small class="location"><%= item.location %></small>
-   <p class="bio"><%= item.bio %><br><span class='followers'><%= item.followers %> abonnés</span></p>
+   <p class="bio"><%= item.bio.html_safe %><br><span class='followers'><%= item.followers %> abonnés</span></p>
   </div>
   </div>
 <% end %>

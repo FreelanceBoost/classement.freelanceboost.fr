@@ -1,3 +1,4 @@
-admin = AdminUser.find_by email: "admin@example.com"
-admin.password = "esaie25:9"
-admin.save
+Dribbler.find_each do |i|
+	i.rank = 1
+	i.save()
+end

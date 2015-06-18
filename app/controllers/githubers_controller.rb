@@ -13,9 +13,13 @@ class GithubersController < ApplicationController
   end
 
   def create
-    user = Github.users.get user:params[:login]
+    begin
+      user = Github.users.get user:params[:login]
+    rescue Exception
+      return render :status => 200
+    end
     if !user
-      render :status => 200
+      return render :status => 200
     end
     update_or_create(user, 0, params[:login])
   end

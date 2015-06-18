@@ -30,7 +30,9 @@ class GithubersController < ApplicationController
       githuber.published = false
     end
     githuber.rank = rank
-    githuber.bio = user.bio
+    if user.bio
+      githuber.bio = user.bio
+    end
     githuber.name = user.name
     githuber.avatar_url = user.avatar_url
     githuber.blog = user.blog

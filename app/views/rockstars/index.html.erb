@@ -1,39 +1,36 @@
 <%= render "shared/tabs" %>
-
 <section class="l-adding main">
   <div class="l-constrained-small">
     <h2>Si vous êtes freelance ajoutez votre pseudo Twitter ci-dessous</h2>
     <%= form_tag("/rockstars") do %>
-      <div id="pseudo-form" style="position:relative">
-        <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo twitter" value="" autocomplete="off">
-        <button type="submit" class="button postfix">Ok</button>
-      </div>
+    <div id="pseudo-form" style="position:relative">
+      <input type="text" id="pseudo" name="pseudo" placeholder="Votre pseudo twitter" value="" autocomplete="off">
+      <button type="submit" class="button postfix">Ok</button>
+    </div>
     <% end %>
   </div>
 </section>
-
 <section class="l-rockstar">
   <div class="l-constrained-small centered">
     <% if !@rockstars.blank? %>
-<% @rockstars.each_with_index do |item,index| %>
-  <div class="rockstar" id="rockstar-<%= item.pseudo %>">
-   <div class="container-avatar">
-    <a href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank"><img class="avatar" src="<%= item.url_img %>"></a>
-    <div class="container-avatar-index"><%= index+1 %></div>
-  </div>
-  <div class="rockstar-description">
-    <a class="link-freelance" href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
-     <strong class="name"><%= item.name %></strong>
-     @<%= item.pseudo %>
-   </a>
-   <small class="location"><%= item.location %></small>
-   <p class="bio"><%= item.desc %><br><span class='followers'><%= item.follower_count %> abonnés</span></p>
-  </div>
-  </div>
-<% end %>
-<% else %>
-<p>Il n'y a aucun freelance pour le moment, soyez le premier !</p>
-<% end %>
+    <% @rockstars.each_with_index do |item,index| %>
+    <div class="rockstar" id="rockstar-<%= item.pseudo %>">
+      <div class="container-avatar">
+        <a href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank"><img class="avatar" src="<%= item.url_img %>"></a>
+        <div class="container-avatar-index"><%= index+1 %></div>
+      </div>
+      <div class="rockstar-description">
+        <a class="link-freelance" href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
+          <strong class="name"><%= item.name %></strong>
+          @<%= item.pseudo %>
+        </a>
+        <small class="location"><%= item.location %></small>
+        <p class="bio"><%= item.desc %><br><span class='followers'><%= item.follower_count %> abonnés</span></p>
+      </div>
+    </div>
+    <% end %>
+    <% else %>
+    <p>Il n'y a aucun freelance pour le moment, soyez le premier !</p>
+    <% end %>
   </div>
 </section>
-

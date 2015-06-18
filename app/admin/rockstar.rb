@@ -5,6 +5,7 @@ index do
     id_column
     column :rank
     column :pseudo
+    column :desc
     column :location
     column :created_at
     actions

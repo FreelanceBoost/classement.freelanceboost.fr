@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.4'
+gem 'rails', '4.2.1'
 
 group :production, :staging do
   gem "pg"
@@ -30,11 +30,13 @@ gem 'google-analytics-rails'
 
 gem 'rails_12factor'
 
-gem 'htmlcompressor', '~> 0.1.1'
-
 gem 'unicorn'
 
 gem 'dribbble'
+gem 'devise'
+gem 'github_api'
+gem 'figaro'
+gem 'htmlcompressor', '~> 0.2.0'
 
 gem 'ionicons-rails', '~> 2.0.0'
 
@@ -48,15 +50,15 @@ end
 
 group :development do
   gem 'guard-livereload'
-  gem "rack-livereload"
+  gem 'rack-livereload'
 end
 
 group :development, :test do
   gem 'sqlite3'
 end
 
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'activeadmin'
 
 gem 'safe_attributes'
 
-ruby '2.0.0'
+ruby '2.2.0'

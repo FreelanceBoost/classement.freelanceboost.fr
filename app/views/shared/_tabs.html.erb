@@ -1,0 +1,42 @@
+<section class="l-tabs">
+  <ul>
+    <% if @tab == 'rockstars'%>
+    <li class="is-active">
+      <i class="icon ion-social-twitter"></i>Twitter
+    </li>
+    <% else %>
+    <li>
+      <a href="/">
+        <i class="icon ion-social-twitter"></i>Twitter
+      </a>
+    </li>
+    <% end %>
+    <% if @tab == 'dribbblers'%>
+    <li class="is-active">
+      <i class="icon ion-social-dribbble"></i>Dribbble
+    </li>
+    <% else %>
+    <li>
+      <a href="/dribblers">
+        <i class="icon ion-social-dribbble"></i>Dribbble
+      </a>
+    </li>
+    <% end %>
+    <% if @tab == 'githubers'%>
+    <li class="is-active">
+      <i class="icon ion-social-github"></i>GitHub
+    </li>
+    <% else %>
+    <li>
+      <a href="/githubers">
+        <i class="icon ion-social-github"></i>GitHub
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</section>
+<section class="l-intro">
+  <div class="l-constrained-small centered">
+    <h1><%= @title %></h1>
+  </div>
+</section>

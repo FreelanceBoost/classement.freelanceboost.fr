@@ -5,4 +5,5 @@ FreelanceboostRanking::Application.routes.draw do
   get 'rockstars' => 'rockstars#index'
   resources 'rockstars'
   resources 'dribblers'
+  resources 'githubers'
 end

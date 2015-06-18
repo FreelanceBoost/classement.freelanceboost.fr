@@ -3,6 +3,7 @@ class RockstarsController < ApplicationController
 
   def index
       @title = "Les 200 freelances francophones les plus suivis sur Twitter"
+      @tab = 'rockstars'
       @rockstars = Rails.cache.fetch('rockstars', :expires_in => 1.hours) do
         Rockstar.where(rank: 1).limit(200).order('follower_count DESC')
       end

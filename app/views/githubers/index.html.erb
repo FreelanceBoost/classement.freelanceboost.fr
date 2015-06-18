@@ -26,13 +26,13 @@
         </a>
         <small class="location"><%= item.location %></small>
         <p class="bio">
-          <% if item.bio %>
-          <%= item.bio %><br>
+          <% if not item.bio.blank? %>
+            <%= item.bio %><br>
           <% end %>
-          <% if item.company %>
-          <%= item.company %><br>
+          <% if not item.company.blank? %>
+            <%= item.company %><br>
           <% end %>
-          <% if item.blog %>
+          <% if not item.blog.blank? %>
             <a href="<%= item.blog %>"><%= item.blog %></a><br>
           <% end %>
           <span class='followers'><%= item.followers_count %> abonnés</span>

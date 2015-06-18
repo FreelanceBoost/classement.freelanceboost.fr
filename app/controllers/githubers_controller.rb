@@ -30,22 +30,34 @@ class GithubersController < ApplicationController
       githuber.published = false
     end
     githuber.rank = rank
-    if user.bio
+    if user.respond_to?(:bio)
       githuber.bio = user.bio
     end
-    githuber.name = user.name
+    if user.respond_to?(:name)
+      githuber.name = user.name
+    end
+    if user.respond_to?(:blog)
+      githuber.blog = user.blog
+    end
+    if user.respond_to?(:email)
+      githuber.email = user.email
+    end
+    if user.respond_to?(:company)
+      githuber.company = user.company
+    end
+    if user.respond_to?(:location)
+      githuber.location = user.location
+    end
+    if user.respond_to?(:hireable)
+      githuber.hireable = user.hireable
+    end
     githuber.avatar_url = user.avatar_url
-    githuber.blog = user.blog
-    githuber.email = user.email
-    githuber.company = user.company
     githuber.github_login = user.login
-    githuber.location = user.location
     githuber.followers_count = user.followers
     githuber.following_count = user.following
     githuber.github_type = user.type
     githuber.public_repo = user.public_repos
     githuber.public_gist = user.public_gists
-    githuber.hireable = user.hireable
     githuber.github_id = user.id
     githuber.github_updated_at = user.updated_at
     githuber.github_created_at = user.created_at

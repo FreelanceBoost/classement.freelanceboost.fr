@@ -1,4 +1,4 @@
-class DribblersController < ApplicationController
+class DribbblersController < ApplicationController
 
   def index
     @dribblers = Dribbler.where(rank: 1).limit(100).order('followers DESC')
@@ -13,7 +13,7 @@ class DribblersController < ApplicationController
   end
 
   def create
-    client = Dribbble::Client.new token: '8fee369206cb79bb6dec48ad2ff6c15ab2365763efc074bfc8629e7d5ac605b5'
+    client = Dribbble::Client.new token: ENV['dribbble_token']
 
     user = client.get_user(params[:pseudo])
     if !user
@@ -26,11 +26,11 @@ class DribblersController < ApplicationController
 
   def update_or_create(user, rank, pseudo)
 
-    dribbler = Dribbler.find_by name: pseudo
+    dribbler = Dribbler.find_by username: pseudo
     if !dribbler
-      dribbler = Dribbler.create(:name => pseudo)
+      dribbler = Dribbler.create(:username => pseudo)
+      dribbler.rank = 0
     end
-    dribbler.rank = rank
     dribbler.picture = user.avatar_url
     dribbler.bio = user.bio
     dribbler.username = user.username

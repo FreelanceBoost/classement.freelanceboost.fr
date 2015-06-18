@@ -13,7 +13,7 @@
 	<%= analytics_init if Rails.env.production? %>
   <script src="//load.sumome.com/" data-sumo-site-id="a4ccc88e31ec75718c5f2c7b96eab0b33bcd4282adc1caff6dcdd81ba61f4595" async></script>
 </head>
-<body>
+<body data-no-turbolink>
 	<div class="row main">
 		<%= yield %>
 	</div>

@@ -43,11 +43,11 @@ class RockstarsController < ApplicationController
 
   def twlient
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "tpUNsQuMvR1Lp3c469loTn6IR"
-      config.consumer_secret     = "x5d898RLATY9skNE0JqOc2sE4TzD0w6hPDcz2RXLhcvZSTgTZr"
-      config.access_token        = "92309068-BOTrYCjeogNSzqKTU3Rf0RqW6vq4DwPq9NF6oPJhU"
-      config.access_token_secret = "JY4YO81dXLiPBFYWG2rVFm10HBUKr59e08cxT1v2P3FiV"
-    end
+      config.consumer_key        = ENV['twitter_consumer_key']
+      config.consumer_secret     = ENV['twitter_consumer_secret']
+      config.access_token        = ENV['twitter_access_token']
+      config.access_token_secret = ENV['twitter_access_token_secret']
+   end
     client
   end
 
@@ -63,14 +63,13 @@ class RockstarsController < ApplicationController
     @name = user.name
     @location = user.location
     @verified = user.verified
-    @rank = rank
 
     pseudo = pseudo.gsub('@','')
     rockstar = Rockstar.find_by pseudo: pseudo
     if !rockstar
       rockstar = Rockstar.create(:pseudo => pseudo)
+      rockstar.rank = 0
     end
-    rockstar.rank = @rank
     rockstar.url_img = @img_url
     rockstar.desc = user.description
     rockstar.name = user.name

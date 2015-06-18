@@ -33,7 +33,7 @@
           <%= item.company %><br>
           <% end %>
           <% if item.blog %>
-            <a href="<% item.blog %>"><% item.blog %></a>
+            <a href="<%= item.blog %>"><%= item.blog %></a>
           <% end %>
           <span class='followers'><%= item.followers_count %> abonnés</span>
         </p>

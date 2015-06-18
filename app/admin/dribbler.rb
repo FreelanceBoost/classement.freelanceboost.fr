@@ -4,6 +4,8 @@ ActiveAdmin.register Dribbler do
     id_column
     column :rank
     column :username
+    column :bio
+    column :followers
     column :location
     column :created_at
     actions

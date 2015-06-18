@@ -6,6 +6,7 @@ index do
     column :rank
     column :pseudo
     column :desc
+    column :follower_count
     column :location
     column :created_at
     actions

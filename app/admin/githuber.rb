@@ -4,10 +4,12 @@ ActiveAdmin.register Githuber do
     selectable_column
     id_column
     column :published
-    column :name
     column :github_login
-    column :location
+    column :name
     column :email
+    column :company
+    column :followers_count
+    column :location
     column :created_at
     actions
   end

@@ -18,7 +18,8 @@
 <% @dribblers.each_with_index do |item,index| %>
   <div class="rockstar" id="rockstar-<%= item.username %>">
    <div class="container-avatar">
-    <a href="https://dribbble.com/<%= item.username %>" rel="nofollow" target="_blank"><img class="avatar" src="<%= item.picture %>"></a>
+    <a href="https://dribbble.com/<%= item.username %>" rel="nofollow" target="_blank">
+      <%= image_tag item.picture, alt: item.username, lazy: true, class: 'avatar' %>
     <div class="container-avatar-index"><%= index+1 %></div>
   </div>
   <div class="rockstar-description">

@@ -16,7 +16,8 @@
     <% @githubers.each_with_index do |item,index| %>
     <div class="rockstar" id="rockstar-<%= item.github_login %>">
       <div class="container-avatar">
-        <a href="<%= item.githuburl %>" rel="nofollow" target="_blank"><img class="avatar" src="<%= item.avatar_url %>"></a>
+        <a href="<%= item.githuburl %>" rel="nofollow" target="_blank">
+          <%= image_tag item.avatar_url, alt: item.github_login, lazy: true, class: 'avatar' %>
         <div class="container-avatar-index"><%= index+1 %></div>
       </div>
       <div class="rockstar-description">

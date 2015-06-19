@@ -16,7 +16,9 @@
     <% @rockstars.each_with_index do |item,index| %>
     <div class="rockstar" id="rockstar-<%= item.pseudo %>">
       <div class="container-avatar">
-        <a href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank"><img class="avatar" src="<%= item.url_img %>"></a>
+        <a href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
+          <%= image_tag item.url_img, alt: item.pseudo, lazy: true, class: 'avatar' %>
+        </a>
         <div class="container-avatar-index"><%= index+1 %></div>
       </div>
       <div class="rockstar-description">

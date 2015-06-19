@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '~> 4.2'
 
 group :production, :staging do
   gem "pg"
@@ -8,7 +8,7 @@ end
 
 gem 'sass-rails', '~> 4.0.2'
 
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 gem 'coffee-rails', '~> 4.0.0'
 
@@ -17,6 +17,8 @@ gem 'jquery-rails'
 gem "lazyload-rails"
 
 gem 'turbolinks'
+
+gem 'nprogress-rails'
 
 gem 'jquery-turbolinks'
 

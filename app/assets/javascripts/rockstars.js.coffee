@@ -1,3 +1,5 @@
+Turbolinks.ProgressBar.enable()
+
 $(document).ready ->
 	$("input#pseudo").keyup (e)->
 		$("div:not([id^=rockstar-"+$("input#pseudo").val().replace('@', '')+"])").addClass("hide")
@@ -23,4 +25,3 @@ FreelanceBoostRanking.load_sumome_script = (data_sumo_site_id) ->
 FreelanceBoostRanking.onDocumentReady ->
   FreelanceBoostRanking.load_sumome_script("a4ccc88e31ec75718c5f2c7b96eab0b33bcd4282adc1caff6dcdd81ba61f4595")
   $("img").lazyload()
-

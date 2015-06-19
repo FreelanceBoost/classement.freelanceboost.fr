@@ -15,4 +15,6 @@
 //= require jquery_ujs
 //= require jquery.lazyload
 //= require turbolinks
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .

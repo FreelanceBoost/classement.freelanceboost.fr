@@ -6,4 +6,5 @@ FreelanceboostRanking::Application.routes.draw do
   resources 'rockstars'
   resources 'dribbblers'
   resources 'githubers'
+  resources 'linkedin'
 end

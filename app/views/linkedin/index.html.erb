@@ -1,35 +1,39 @@
 <%= render "shared/tabs" %>
 <section class="l-adding main">
   <div class="l-constrained-small">
-    <h2>Si vous êtes freelance ajoutez votre compte LinkedIn</h2>
-    <a href="<%=@authorize_url%>" class="button postfix" target="_blank">Ajouter mon compte LinkedIn</a>
+    <h2>Si vous êtes freelance Ajoutez votre compte LinkedIn</h2>
+    <%= form_tag( @authorize_url, method: :get,authenticity_token: false, enforce_utf8: false) do %>
+      <input type="hidden" name="redirect_uri" value="<%=@callback%>">
+      <input type="hidden" name="oauth_token" value="<%=@oauth_token%>">
+      <button type="submit" style="position: relative" class="">Ajoutez votre compte LinkedIn</button>
+    <% end %>
   </div>
 </section>
 <section class="l-rockstar">
   <div class="l-constrained-small centered">
-    <% if !@linkedinList.blank? %>
-    <% @githubers.each_with_index do |item,index| %>
-    <div class="rockstar" id="rockstar-<%= item.github_login %>">
+    <% if !@linkedins.blank? %>
+    <% @linkedins.each_with_index do |item,index| %>
+    <div class="rockstar" id="rockstar-<%= item.linkedin_id %>">
       <div class="container-avatar">
-        <a href="<%= item.githuburl %>" rel="nofollow" target="_blank">
-          <%= image_tag item.avatar_url, alt: item.github_login, lazy: true, class: 'avatar' %>
+        <a href="<%= item.linkedin_url %>" rel="nofollow" target="_blank">
+          <%= image_tag item.avatar_url, alt: item.last_name, lazy: true, class: 'avatar' %>
         <div class="container-avatar-index"><%= index+1 %></div>
       </div>
       <div class="rockstar-description">
-        <a class="link-freelance" href="<%= item.githuburl %>" rel="nofollow" target="_blank">
-          <strong class="name"><%= item.name %></strong>
-          <i class="icon ion-social-github"></i> <%= item.github_login %>
+        <a class="link-freelance" href="<%= item.linkedin_url %>" rel="nofollow" target="_blank">
+          <strong class="name"><%= item.first_name %>&nbsp;<%= item.last_name %></strong>
+          <i class="icon ion-social-linkedin"></i>
         </a>
         <small class="location"><%= item.location %></small>
         <p class="bio">
           <% if not item.bio.blank? %>
             <%= item.bio %><br>
           <% end %>
-          <% if not item.company.blank? %>
-            <%= item.company %><br>
-          <% end %>
           <% if not item.blog.blank? %>
             <a href="<%= item.blog %>"><%= item.blog %></a><br>
+          <% end %>
+          <% if item.num_connections_capped %>
+            <i class="icon ion-plus"></i>
           <% end %>
           <span class='followers'><%= item.followers_count %> abonnés</span>
         </p>

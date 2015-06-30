@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618120806) do
+ActiveRecord::Schema.define(version: 20150630075231) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -82,6 +82,24 @@ ActiveRecord::Schema.define(version: 20150618120806) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "githuburl",         limit: 256
+  end
+
+  create_table "linkedins", force: :cascade do |t|
+    t.string   "bio",                    limit: 512
+    t.string   "first_name",             limit: 256
+    t.string   "last_name"
+    t.integer  "followers_count"
+    t.string   "location",               limit: 256
+    t.boolean  "published"
+    t.integer  "rank"
+    t.string   "avatar_url",             limit: 256
+    t.string   "blog",                   limit: 256
+    t.string   "email",                  limit: 256
+    t.string   "linkedin_id",            limit: 256
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "linkedin_url",           limit: 256
+    t.boolean  "num_connections_capped"
   end
 
   create_table "rockstars", force: :cascade do |t|

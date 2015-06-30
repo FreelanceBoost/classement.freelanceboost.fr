@@ -26,9 +26,13 @@ class DribbblersController < ApplicationController
     dribbblers = Dribbler.all()
     client = Dribbble::Client.new token: ENV['dribbble_token']
     dribbblers.each do |dribbbler|
-      user = client.get_user(dribbbler.username)
-      if user
-        update_or_create(user, dribbbler.rank, dribbbler.username)
+      begin
+        user = client.get_user(dribbbler.username)
+        if user
+          update_or_create(user, dribbbler.rank, dribbbler.username)
+        end
+      rescue
+        puts "error => #{dribbbler.username}"
       end
     end
   end

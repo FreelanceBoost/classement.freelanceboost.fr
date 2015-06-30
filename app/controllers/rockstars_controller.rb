@@ -19,10 +19,15 @@ class RockstarsController < ApplicationController
   def create
     client = twlient()
 
-    user = client.user(params[:pseudo])
-    if !user
-      render :status => 200
+    begin
+      user = client.user(params[:pseudo])
+      if !user
+        render :status => 200
+      end
+    rescue Exception
+      return render :status => 200
     end
+
     update_or_create(user, 0, params[:pseudo])
   end
 

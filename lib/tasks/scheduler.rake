@@ -3,14 +3,15 @@ task :update_tweet => :environment do
 
   puts "Updating Tweeter / Dribbbler / GitHub / LinkedIn accounts..."
 
+  githuber = GithubersController.new
+  githuber.update()
+
   twitter = RockstarsController.new
   twitter.update()
 
   dribbler = DribbblersController.new
   dribbler.update()
 
-  githuber = GithubersController.new
-  githuber.update()
 
   puts "done."
 end

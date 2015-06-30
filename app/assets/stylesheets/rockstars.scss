@@ -2,8 +2,8 @@ $nprogress-color: rgba(44, 185, 116, 0.54);
 $nprogress-height: 2px;
 $nprogress-zindex: 10100;
 
-@import 'nprogress';
-@import 'nprogress-bootstrap';
+@import "nprogress";
+@import "nprogress-bootstrap";
 @import "ionicons";
 
 @font-face {
@@ -366,7 +366,7 @@ a {
             font-size: 1.2em;
             display: inline-block;
             padding: 15px;
-            width: 115px;
+            width: auto;
             background: white;
             color: #2cb974;
             border-top: 10px solid white;
@@ -392,5 +392,14 @@ a {
     $middle: 40%;
     .main {
         overflow: hidden;
+    }
+    .l-tabs {
+        ul {
+            li {
+                span {
+                    display: none;
+                }
+            }
+        }
     }
 }

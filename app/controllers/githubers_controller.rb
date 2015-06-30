@@ -24,6 +24,16 @@ class GithubersController < ApplicationController
     update_or_create(user, 0, params[:login])
   end
 
+  def update
+    githubers = Githuber.all()
+    githubers.each do |githuber|
+      user = Github.users.get user:githuber.github_login
+      if user
+        update_or_create(user, githuber.rank, githuber.github_login)
+      end
+    end
+  end
+
   protected
 
   def update_or_create(user, rank, login)

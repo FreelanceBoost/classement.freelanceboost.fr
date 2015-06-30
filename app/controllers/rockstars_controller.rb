@@ -2,11 +2,12 @@ require 'date'
 class RockstarsController < ApplicationController
 
   def index
-      @title = "Les 200 freelances francophones les plus suivis sur Twitter"
+
       @tab = 'rockstars'
       @rockstars = Rails.cache.fetch('rockstars', :expires_in => 1.hours) do
-        Rockstar.where(rank: 1).limit(200).order('follower_count DESC')
+        Rockstar.where(rank: 1).order('follower_count DESC')
       end
+      @title = "Les #{@rockstars.size} freelances francophones les plus suivis sur Twitter"
       respond_to do |format|
         format.html
         format.json {
@@ -26,11 +27,11 @@ class RockstarsController < ApplicationController
   end
 
   def update
-    rockstars = Rockstar.where(rank: 1).limit(200).order('follower_count DESC')
+    rockstars = Rockstar.all()
     client = twlient()
     today = Date.today
-    rockstars = rockstars[100,199] if today.mday % 2 == 0
-    rockstars = rockstars[0,99] if today.mday % 2 != 0
+    rockstars = rockstars[rockstars.size / 2, rockstars.size-1] if today.mday % 2 == 0
+    rockstars = rockstars[0, rockstars.size / 2] if today.mday % 2 != 0
     rockstars.each do |rockstar|
       user = client.user(rockstar.pseudo)
       if user

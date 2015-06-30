@@ -22,6 +22,17 @@ class DribbblersController < ApplicationController
     update_or_create(user, 0, params[:pseudo])
   end
 
+  def update
+    dribbblers = Dribbler.all()
+    client = Dribbble::Client.new token: ENV['dribbble_token']
+    dribbblers.each do |dribbbler|
+      user = client.get_user(dribbbler.username)
+      if user
+        update_or_create(user, dribbbler.rank, dribbbler.username)
+      end
+    end
+  end
+
   protected
 
   def update_or_create(user, rank, pseudo)

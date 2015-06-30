@@ -38,9 +38,13 @@ class RockstarsController < ApplicationController
     rockstars = rockstars[rockstars.size / 2, rockstars.size-1] if today.mday % 2 == 0
     rockstars = rockstars[0, rockstars.size / 2] if today.mday % 2 != 0
     rockstars.each do |rockstar|
-      user = client.user(rockstar.pseudo)
-      if user
-        update_or_create(user, rockstar.rank, rockstar.pseudo)
+      begin
+        user = client.user(rockstar.pseudo)
+        if user
+          update_or_create(user, rockstar.rank, rockstar.pseudo)
+        end
+      rescue Exception
+        puts "error => #{rockstar.pseudo}"
       end
     end
   end

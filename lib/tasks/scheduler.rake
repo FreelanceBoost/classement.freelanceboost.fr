@@ -12,6 +12,5 @@ task :update_tweet => :environment do
   dribbler = DribbblersController.new
   dribbler.update()
 
-
   puts "done."
 end

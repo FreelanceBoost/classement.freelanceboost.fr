@@ -13,6 +13,11 @@ class GithubersController < ApplicationController
   end
 
   def create
+
+    Github.configure do |c|
+      c.basic_auth = ENV["github_pass"]
+    end
+
     begin
       user = Github.users.get user:params[:login]
     rescue Exception

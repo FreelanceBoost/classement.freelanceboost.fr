@@ -32,10 +32,9 @@
           <% if not item.blog.blank? %>
             <a href="<%= item.blog %>"><%= item.blog %></a><br>
           <% end %>
-          <% if item.num_connections_capped %>
-            <i class="icon ion-plus"></i>
-          <% end %>
-          <span class='followers'><%= item.followers_count %> abonnés</span>
+          <span class='followers'>
+            <%= item.followers_count %><% if item.num_connections_capped %>+<% end %> abonnés
+          </span>
         </p>
       </div>
     </div>

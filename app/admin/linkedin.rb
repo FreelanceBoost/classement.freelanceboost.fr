@@ -1,10 +1,10 @@
 ActiveAdmin.register Linkedin do
 
-index do
+  index do
     selectable_column
     id_column
     column :published
-    column :linkedin_id
+    column :bio
     column :first_name
     column :last_name
     column :email
@@ -15,13 +15,20 @@ index do
     actions
   end
 
+  form do |f|
+    inputs 'Details' do
+      input :published
+      input :followers_count
+      input :num_connections_capped
+    end
+    actions
+  end
+
   batch_action :published do |ids|
-    Linkedin.find(ids).each do |githuber|
-      githuber.published = true
-      githuber.save
+    Linkedin.find(ids).each do |linkedin|
+      linkedin.published = true
+      linkedin.save
     end
     redirect_to collection_path, alert: "Linkedin published"
   end
-
-
 end

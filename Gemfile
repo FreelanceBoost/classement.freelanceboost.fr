@@ -39,5 +39,6 @@ end
 gem 'activeadmin', github: 'activeadmin'
 gem 'safe_attributes'
 gem 'linkedin'
+gem 'elasticsearch', '~> 1.0'
 
 ruby '2.2.0'

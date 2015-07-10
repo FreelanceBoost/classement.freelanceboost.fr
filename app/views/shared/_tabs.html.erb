@@ -51,3 +51,6 @@
     <h1><%= @title %></h1>
   </div>
 </section>
+<% if Rails.env.development? %>
+  <% console %>
+<% end %>

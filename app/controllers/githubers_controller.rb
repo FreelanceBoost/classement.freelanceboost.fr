@@ -84,6 +84,36 @@ class GithubersController < ApplicationController
     githuber.githuburl = user.html_url
 
     githuber.save
+
+    sync_es(githuber)
+  end
+
+  def sync_es(githuber)
+    client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+    response = client.search index: 'influencers', body: { query: { match: { pseudo: githuber.github_login } } }
+    result = mash = Hashie::Mash.new response
+    if result.hits.total > 0
+      user = result.hits.hits[0]._source
+    else
+      user = {}
+      user[:pseudo] = githuber.github_login
+    end
+    user[:email] = githuber.email if githuber.respond_to?(:email) and githuber.email
+    if githuber.respond_to?(:location) and githuber.location and "france".casecmp(githuber.location) != 0
+      location = Geocoder.coordinates(githuber.location)
+      user[:location] = location.join(',') if location
+    end
+    if githuber.respond_to?(:name)
+      user[:name] = githuber.name
+    end
+    user[:github] = githuber
+
+    if result.hits.total > 0
+      client.index  index: 'influencers', type: 'influencer', id: result.hits.hits[0]._id ,body: user
+    else
+      client.index  index: 'influencers', type: 'influencer', body: user
+    end
+
   end
 
 end

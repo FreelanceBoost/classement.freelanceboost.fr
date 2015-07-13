@@ -1,7 +1,11 @@
 class DribbblersController < ApplicationController
 
   def index
-    @dribblers = Dribbler.where(rank: 1).limit(100).order('followers DESC')
+
+    @dribblers = Rails.cache.fetch('dribblers', :expires_in => 23.hours) do
+      Dribbler.where(rank: 1).limit(100).order('followers DESC')
+    end
+
     @title = "Les #{@dribblers.size} freelances francophones les plus suivis sur Dribbble"
     @tab = 'dribbblers'
     respond_to do |format|

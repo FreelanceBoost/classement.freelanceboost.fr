@@ -4,7 +4,7 @@ class RockstarsController < ApplicationController
   def index
 
       @tab = 'rockstars'
-      @rockstars = Rails.cache.fetch('rockstars', :expires_in => 1.hours) do
+      @rockstars = Rails.cache.fetch('rockstars', :expires_in => 23.hours) do
         Rockstar.where(rank: 1).order('follower_count DESC')
       end
       @title = "Les #{@rockstars.size} freelances francophones les plus suivis sur Twitter"

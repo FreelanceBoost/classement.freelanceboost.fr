@@ -5,7 +5,9 @@ class LinkedinController < ApplicationController
     @authorize_url = "#{url.scheme}://#{url.host}#{url.path}"
     @oauth_token = url.query.split('=')[1]
     @callback = "http://#{request.host}:#{request.port}/auth/linkedin/callback"
-    @linkedins = Linkedin.where(published: true).limit(100).order('followers_count DESC')
+    @linkedins = Rails.cache.fetch('linkedin', :expires_in => 23.hours) do
+      Linkedin.where(published: true).limit(100).order('followers_count DESC')
+    end
     @title = "Les #{@linkedins.size} freelances francophones les plus suivis sur LinkedIn"
     @tab = 'linkedin'
     respond_to do |format|

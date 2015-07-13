@@ -1,4 +1,8 @@
 == Classement des freelances francophone
 
 * Ruby version : 2.2.0
-* Rails : 4.2.1
+* Rails : ~> 4.2
+
+== Git Commit Guidelines
+
+https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit

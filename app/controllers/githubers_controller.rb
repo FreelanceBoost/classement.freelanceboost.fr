@@ -1,7 +1,11 @@
 class GithubersController < ApplicationController
 
   def index
-    @githubers = Githuber.where(published: true).limit(100).order('followers_count DESC')
+
+    @githubers = Rails.cache.fetch('githubers', :expires_in => 23.hours) do
+      Githuber.where(published: true).limit(100).order('followers_count DESC')
+    end
+
     @title = "Les #{@githubers.size} freelances francophones les plus suivis sur GitHub"
     @tab = 'githubers'
     respond_to do |format|

@@ -22,5 +22,6 @@ module FreelanceboostRanking
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.cache_store = :dalli_store
+    config.middleware.use Rack::Deflater
   end
 end

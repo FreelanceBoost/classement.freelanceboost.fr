@@ -86,13 +86,15 @@ class RockstarsController < ApplicationController
     rockstar.location = user.location
     rockstar.follower_count = user.followers_count
     rockstar.save
-    sync_es(rockstar)
+    if rockstar.rank == 1
+      sync_es(rockstar)
+    end
   end
 
   def sync_es(rockstar)
     client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
     response = client.search index: 'influencers', body: { query: { match: { pseudo: rockstar.pseudo } } }
-    result = mash = Hashie::Mash.new response
+    result = Hashie::Mash.new response
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else

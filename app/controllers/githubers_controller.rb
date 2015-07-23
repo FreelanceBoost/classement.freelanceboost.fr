@@ -84,14 +84,15 @@ class GithubersController < ApplicationController
     githuber.githuburl = user.html_url
 
     githuber.save
-
-    sync_es(githuber)
+    if githuber.published
+      sync_es(githuber)
+    end
   end
 
   def sync_es(githuber)
     client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
     response = client.search index: 'influencers', body: { query: { match: { pseudo: githuber.github_login } } }
-    result = mash = Hashie::Mash.new response
+    result = Hashie::Mash.new response
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else

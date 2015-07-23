@@ -39,7 +39,9 @@ class LinkedinController < ApplicationController
   def update
     users = Linkedin.all()
     users.each do |user|
-      sync_es(user)
+      if user.published
+        sync_es(user)
+      end
     end
   end
 
@@ -78,7 +80,7 @@ class LinkedinController < ApplicationController
   def sync_es(linkedin)
     client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
     response = client.search index: 'influencers', body: { query: { match: { email: linkedin.email } } }
-    result = mash = Hashie::Mash.new response
+    result = Hashie::Mash.new response
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else

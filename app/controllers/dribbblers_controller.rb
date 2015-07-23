@@ -53,13 +53,15 @@ class DribbblersController < ApplicationController
     dribbler.location = user.location
     dribbler.followers = user.followers_count
     dribbler.save
-    sync_es(dribbler)
+    if dribbler.rank == 1
+      sync_es(dribbler)
+    end
   end
 
   def sync_es(dribbler)
     client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
     response = client.search index: 'influencers', body: { query: { match: { pseudo: dribbler.username } } }
-    result = mash = Hashie::Mash.new response
+    result =  Hashie::Mash.new response
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else

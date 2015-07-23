@@ -1,0 +1,96 @@
+<%= render "shared/tabs" %>
+<section class="l-adding main">
+  <div class="l-constrained-small">
+    <h2>
+      Si vous êtes freelance ajoutez votre pseudo
+      <a href="">Twitter</a>,
+      <a href="dribblers">Dribbble</a>,
+      <a href="githubers">GitHub</a> ou
+      <a href="linkedin">Linkedin</a> !
+    </h2>
+  </div>
+</section>
+<section class="l-rockstar">
+  <div class="l-constrained-small centered">
+    <% if !@allranking.hits.hits.blank? %>
+    <% @allranking.hits.hits.each_with_index do |item,index| %>
+    <div class="rockstar" id="rockstar-<%= item._source.pseudo %>">
+      <div class="container-avatar">
+        <% if !item._source.twitter.blank? %>
+          <a href="https://twitter.com/intent/follow?screen_name=<%= item._source.pseudo %>"
+            rel="nofollow"
+            target="_blank">
+            <%= image_tag item._source.twitter.url_img, alt: item._source.pseudo, lazy: true, class: 'avatar' %>
+          </a>
+        <% elsif !item._source.dribbbler.blank? %>
+          <a href="https://dribbble.com/<%= item._source.pseudo %>" rel="nofollow" target="_blank">
+            <%= image_tag item._source.dribbbler.picture, alt: item.username, lazy: true, class: 'avatar' %>
+          </a>
+        <% elsif !item._source.github.blank? %>
+          <a href="<%= item._source.github.githuburl %>" rel="nofollow" target="_blank">
+            <%= image_tag item._source.github.avatar_url, alt: item._source.github.github_login, lazy: true, class: 'avatar' %>
+          <a/>
+        <% elsif !item._source.linkedin.blank? %>
+          <a href="<%= item._source.linkedin.linkedin_url %>" rel="nofollow" target="_blank">
+            <%= image_tag item._source.linkedin.avatar_url, alt: item.last_name, lazy: true, class: 'avatar' %>
+          </a>
+        <% end %>
+        <div class="container-avatar-index"><%= index+1 %></div>
+      </div>
+      <div class="rockstar-description">
+        <% if !item._source.twitter.blank? %>
+
+          <a class="link-freelance"
+            href="https://twitter.com/intent/follow?screen_name=<%= item._source.pseudo %>"
+            rel="nofollow"
+            target="_blank">
+            <strong class="name"><%= item._source.name %></strong>
+            </i>
+          </a>
+          <small class="location"><%= item.location %></small>
+          <p class="bio"><%= item._source.twitter.desc %><br><span class='followers'><%= item.follower_count %> abonnés</span></p>
+
+        <% elsif !item._source.dribbbler.blank? %>
+
+          <a class="link-freelance" href="https://dribbble.com/<%= item._source.dribbbler.username %>" rel="nofollow" target="_blank">
+            <strong class="name"><%= item._source.name %></strong>
+          </a>
+          <small class="location"><%= item._source.dribbbler.location %></small>
+          <p class="bio">
+            <%= item._source.dribbbler.bio.html_safe %>
+            <br>
+            <span class='followers'>
+              <%= item.followers %> abonnés
+            </span>
+          </p>
+
+        <% elsif !item._source.github.blank? %>
+
+          <a class="link-freelance" href="<%= item._source.github.githuburl %>" rel="nofollow" target="_blank">
+            <strong class="name"><%= item._source.name %></strong>
+          </a>
+          <small class="location"><%= item._source.github.location %></small>
+          <p class="bio">
+            <% if not item._source.github.bio.blank? %>
+              <%= item._source.github.bio %><br>
+            <% end %>
+            <% if not item._source.github.company.blank? %>
+              <%= item._source.github.company %><br>
+            <% end %>
+            <% if not item._source.github.blog.blank? %>
+              <a href="<%= item._source.github.blog %>"><%= item._source.github.blog %></a><br>
+            <% end %>
+            <span class='followers'><%= item.followers_count %> abonnés</span>
+          </p>
+
+        <% elsif !item._source.linkedin.blank? %>
+
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+    <% else %>
+      <p>Il n'y a aucun freelance pour le moment, soyez le premier !</p>
+    <% end %>
+  </div>
+</section>

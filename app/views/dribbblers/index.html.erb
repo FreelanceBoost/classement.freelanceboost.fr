@@ -15,8 +15,8 @@
 <section class="l-rockstar">
   <div class="l-constrained-small centered">
     <% if !@dribblers.blank? %>
-      <% cache("dribblers_partials", :expires_in => 24.hour) do %>
-        <%= render :partial => "dribblers" %>
+      <% cache("dribbblers_partials", :expires_in => 24.hour) do %>
+        <%= render :partial => "dribbblers" %>
       <% end %>
     <% else %>
       <p>Il n'y a aucun freelance pour le moment, soyez le premier !</p>

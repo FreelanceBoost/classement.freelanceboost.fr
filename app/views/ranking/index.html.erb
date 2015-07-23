@@ -48,7 +48,7 @@
             </i>
           </a>
           <small class="location"><%= item.location %></small>
-          <p class="bio"><%= item._source.twitter.desc %><br><span class='followers'><%= item.follower_count %> abonnés</span></p>
+          <p class="bio"><%= item._source.twitter.desc %><br><span class='followers'><%= item._source.total_followers_count %> abonnés</span></p>
 
         <% elsif !item._source.dribbbler.blank? %>
 
@@ -60,7 +60,7 @@
             <%= item._source.dribbbler.bio.html_safe %>
             <br>
             <span class='followers'>
-              <%= item.followers %> abonnés
+              <%= item._source.total_followers_count %> abonnés
             </span>
           </p>
 
@@ -80,11 +80,26 @@
             <% if not item._source.github.blog.blank? %>
               <a href="<%= item._source.github.blog %>"><%= item._source.github.blog %></a><br>
             <% end %>
-            <span class='followers'><%= item.followers_count %> abonnés</span>
+            <span class='followers'><%= item._source.total_followers_count %> abonnés</span>
           </p>
 
         <% elsif !item._source.linkedin.blank? %>
-
+        <a class="link-freelance" href="<%= item.linkedin_url %>" rel="nofollow" target="_blank">
+          <strong class="name"><%= item._source.linkedin.first_name %>&nbsp;<%= item._source.linkedin.last_name %></strong>
+            <i class="icon ion-social-linkedin"></i>
+          </a>
+          <small class="location"><%= item._source.linkedin.location %></small>
+          <p class="bio">
+            <% if not item._source.linkedin.bio.blank? %>
+              <%= item.bio %><br>
+            <% end %>
+            <% if not item._source.linkedin.blog.blank? %>
+              <a href="<%= item.blog %>"><%= item._source.linkedin.blog %></a><br>
+            <% end %>
+            <span class='followers'>
+              <%= item._source.total_followers_count %> abonnés
+          </span>
+        </p>
         <% end %>
       </div>
     </div>

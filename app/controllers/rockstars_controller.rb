@@ -98,14 +98,22 @@ class RockstarsController < ApplicationController
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else
-      user = {}
-      user[:pseudo] = rockstar.pseudo
+      response = client.search index: 'influencers', body: { query: { match: { name: rockstar.name } } }
+      result = Hashie::Mash.new response
+      if result.hits.total > 0
+        user = result.hits.hits[0]._source
+      else
+        user = {}
+        user[:pseudo] = rockstar.pseudo
+      end
     end
     if rockstar.respond_to?(:location) and rockstar.location and "france".casecmp(rockstar.location) != 0
       location = Geocoder.coordinates(rockstar.location)
       user[:location] = location.join(',') if location
     end
-    user[:name] = rockstar.name
+    if !user[:name]
+      user[:name] = rockstar.name
+    end
     user[:twitter] = rockstar
 
     if result.hits.total > 0

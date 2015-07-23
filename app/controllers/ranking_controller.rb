@@ -6,6 +6,7 @@ class RankingController < ApplicationController
         client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
         response = client.search index: 'influencers', body:
           {
+            sort: [{ total_followers_count: {order: "desc"}}],
             from: 0,
             size: 100,
             query:
@@ -64,14 +65,16 @@ class RankingController < ApplicationController
         if item._source.dribbbler
           total_followers_count += item._source.dribbbler.followers
         end
-        if item._source.twitter
-          total_followers_count += item._source.twitter.follower_count
+        if item._source.github
+          total_followers_count += item._source.github.followers_count
         end
-        if item._source.twitter
-          total_followers_count += item._source.twitter.follower_count
+        if item._source.linkedin
+          total_followers_count += item._source.linkedin.followers_count
         end
 
-        puts "#{item._source.pseudo}=>#{total_followers_count}"
+        item._source['total_followers_count']  = total_followers_count
+        client.index  index: 'influencers', type: 'influencer', id: item._id, body: item._source
+
       end
   end
 

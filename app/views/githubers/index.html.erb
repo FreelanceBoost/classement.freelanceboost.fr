@@ -13,34 +13,9 @@
 <section class="l-rockstar">
   <div class="l-constrained-small centered">
     <% if !@githubers.blank? %>
-    <% @githubers.each_with_index do |item,index| %>
-    <div class="rockstar" id="rockstar-<%= item.github_login %>">
-      <div class="container-avatar">
-        <a href="<%= item.githuburl %>" rel="nofollow" target="_blank">
-          <%= image_tag item.avatar_url, alt: item.github_login, lazy: true, class: 'avatar' %>
-        <div class="container-avatar-index"><%= index+1 %></div>
-      </div>
-      <div class="rockstar-description">
-        <a class="link-freelance" href="<%= item.githuburl %>" rel="nofollow" target="_blank">
-          <strong class="name"><%= item.name %></strong>
-          <i class="icon ion-social-github"></i> <%= item.github_login %>
-        </a>
-        <small class="location"><%= item.location %></small>
-        <p class="bio">
-          <% if not item.bio.blank? %>
-            <%= item.bio %><br>
-          <% end %>
-          <% if not item.company.blank? %>
-            <%= item.company %><br>
-          <% end %>
-          <% if not item.blog.blank? %>
-            <a href="<%= item.blog %>"><%= item.blog %></a><br>
-          <% end %>
-          <span class='followers'><%= item.followers_count %> abonnés</span>
-        </p>
-      </div>
-    </div>
-    <% end %>
+      <% cache("githubers_partials", :expires_in => 24.hour) do %>
+        <%= render :partial => "githubers" %>
+      <% end %>
     <% else %>
     <p>Il n'y a aucun freelance pour le moment, soyez le premier !</p>
     <% end %>

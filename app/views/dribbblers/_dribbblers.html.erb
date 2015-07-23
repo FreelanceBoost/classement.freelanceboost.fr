@@ -1,0 +1,20 @@
+<% @dribblers.each_with_index do |item,index| %>
+  <div class="rockstar" id="rockstar-<%= item.username %>">
+    <div class="container-avatar">
+      <a href="https://dribbble.com/<%= item.username %>" rel="nofollow" target="_blank">
+        <%= image_tag item.picture, alt: item.username, lazy: true, class: 'avatar' %>
+      <div class="container-avatar-index"><%= index+1 %></div>
+    </div>
+    <div class="rockstar-description">
+      <a class="link-freelance" href="https://dribbble.com/<%= item.username %>" rel="nofollow" target="_blank">
+        <strong class="name"><%= item.name %></strong>
+        <i class="icon ion-social-dribbble"></i> <%= item.username %>
+      </a>
+      <small class="location"><%= item.location %></small>
+      <p class="bio"><%= item.bio.html_safe %>
+        <br>
+        <span class='followers'><%= item.followers %> abonnés</span>
+      </p>
+    </div>
+  </div>
+<% end %>

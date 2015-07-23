@@ -1,0 +1,27 @@
+<% @linkedins.each_with_index do |item,index| %>
+  <div class="rockstar" id="rockstar-<%= item.linkedin_id %>">
+    <div class="container-avatar">
+      <a href="<%= item.linkedin_url %>" rel="nofollow" target="_blank">
+        <%= image_tag item.avatar_url, alt: item.last_name, lazy: true, class: 'avatar' %>
+      <div class="container-avatar-index"><%= index+1 %></div>
+    </div>
+    <div class="rockstar-description">
+      <a class="link-freelance" href="<%= item.linkedin_url %>" rel="nofollow" target="_blank">
+        <strong class="name"><%= item.first_name %>&nbsp;<%= item.last_name %></strong>
+        <i class="icon ion-social-linkedin"></i>
+      </a>
+      <small class="location"><%= item.location %></small>
+      <p class="bio">
+        <% if not item.bio.blank? %>
+          <%= item.bio %><br>
+        <% end %>
+        <% if not item.blog.blank? %>
+          <a href="<%= item.blog %>"><%= item.blog %></a><br>
+        <% end %>
+        <span class='followers'>
+          <%= item.followers_count %><% if item.num_connections_capped %>+<% end %> connections
+        </span>
+      </p>
+    </div>
+  </div>
+<% end %>

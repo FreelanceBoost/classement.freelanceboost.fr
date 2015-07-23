@@ -26,6 +26,7 @@ gem 'github_api'
 gem 'figaro'
 gem 'htmlcompressor', '~> 0.2.0'
 gem 'ionicons-rails', '~> 2.0.0'
+gem 'dalli'
 group :production, :staging do
   gem 'sprockets-redirect'
 end

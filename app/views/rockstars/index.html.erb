@@ -13,26 +13,11 @@
 <section class="l-rockstar">
   <div class="l-constrained-small centered">
     <% if !@rockstars.blank? %>
-    <% @rockstars.each_with_index do |item,index| %>
-    <div class="rockstar" id="rockstar-<%= item.pseudo %>">
-      <div class="container-avatar">
-        <a href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
-          <%= image_tag item.url_img, alt: item.pseudo, lazy: true, class: 'avatar' %>
-        </a>
-        <div class="container-avatar-index"><%= index+1 %></div>
-      </div>
-      <div class="rockstar-description">
-        <a class="link-freelance" href="https://twitter.com/intent/follow?screen_name=<%= item.pseudo %>" rel="nofollow" target="_blank">
-          <strong class="name"><%= item.name %></strong>
-          @<%= item.pseudo %>
-        </a>
-        <small class="location"><%= item.location %></small>
-        <p class="bio"><%= item.desc %><br><span class='followers'><%= item.follower_count %> abonnés</span></p>
-      </div>
-    </div>
-    <% end %>
+      <% cache("rockstars_partials", :expires_in => 1.hour) do %>
+        <%= render :partial => "rockstars" %>
+      <% end %>
     <% else %>
-    <p>Il n'y a aucun freelance pour le moment, soyez le premier !</p>
+      <p>Il n'y a aucun freelance pour le moment, soyez le premier !</p>
     <% end %>
   </div>
 </section>

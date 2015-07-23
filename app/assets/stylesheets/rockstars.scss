@@ -72,7 +72,7 @@ img {
 a {
     color: #2cb974;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: bold !important;
     transition: all .2s linear;
     -webkit-transition: all .2s linear;
     -moz-transition: all .2s linear;
@@ -92,7 +92,7 @@ a {
     text-transform: uppercase;
     color: #000;
     border-bottom: solid 3px #fff;
-    font-weight: 300;
+    font-weight: bold !important;
 }
 
 .l-header {
@@ -382,6 +382,7 @@ a {
             &.is-active {
                 background: #2cb974;
                 color: white;
+                font-weight: bold;
             }
         }
     }

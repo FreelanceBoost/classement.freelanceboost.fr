@@ -1,1 +1,4 @@
-<%= render "shared/create" %>
+<% cache("create", :expires_in => 24.hour) do %>
+  <%= render "shared/create" %>
+<% end %>
+

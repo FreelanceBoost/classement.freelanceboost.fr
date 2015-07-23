@@ -27,6 +27,8 @@ gem 'figaro'
 gem 'htmlcompressor', '~> 0.2.0'
 gem 'ionicons-rails', '~> 2.0.0'
 gem 'dalli'
+gem 'rack-cache'
+gem 'kgio'
 group :production, :staging do
   gem 'sprockets-redirect'
 end

@@ -185,6 +185,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kgio (2.9.3)
     lazyload-rails (0.3.1)
       nokogiri (~> 1.5)
     linkedin (1.0.0)
@@ -239,6 +240,8 @@ GEM
     puma (2.11.3)
       rack (>= 1.1, < 2.0)
     rack (1.6.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-livereload (0.3.15)
       rack
     rack-test (0.6.3)
@@ -364,6 +367,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
+  kgio
   lazyload-rails
   linkedin
   newrelic_rpm
@@ -371,6 +375,7 @@ DEPENDENCIES
   pg
   protected_attributes
   puma
+  rack-cache
   rack-livereload
   rails (~> 4.2)
   rails_12factor

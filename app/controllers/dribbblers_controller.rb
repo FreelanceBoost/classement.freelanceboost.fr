@@ -35,8 +35,9 @@ class DribbblersController < ApplicationController
         if user
           update_or_create(user, dribbbler.rank, dribbbler.username)
         end
-      rescue
+      rescue Exception
         puts "dribbble error => #{dribbbler.username}"
+        puts Exception
       end
     end
   end

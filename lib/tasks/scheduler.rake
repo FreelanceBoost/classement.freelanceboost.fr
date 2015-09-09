@@ -23,10 +23,8 @@ task :update_tweet => :environment do
   linkedin.update()
   puts "<= linkedin"
   
-  puts "GitHub =>"
   ranking = RankingController.new
   ranking.calculate_rank()
-  puts "<=GitHub"
 
   puts "done."
 end

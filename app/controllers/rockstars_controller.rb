@@ -45,6 +45,7 @@ class RockstarsController < ApplicationController
         end
       rescue Exception
         puts "twitter error => #{rockstar.pseudo}"
+        puts Exception
       end
     end
   end

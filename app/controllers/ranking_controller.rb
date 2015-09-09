@@ -16,7 +16,7 @@ class RankingController < ApplicationController
           }
         @allranking = Hashie::Mash.new response
       #end
-      @title = "Les #{@allranking.hits.total} freelances rockstars francophones !"
+      @title = "Classement FreelanceBoost des freelances francophones !"
       respond_to do |format|
         format.html
         format.json {

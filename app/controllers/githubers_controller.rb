@@ -1,7 +1,7 @@
 class GithubersController < ApplicationController
 
   def index
-    @githubers = Githuber.where(published: true).limit(100).order('followers_count DESC')
+    @githubers = Githuber.where(published: true).order('followers_count DESC')
     @title = "Les #{@githubers.size} freelances francophones les plus suivis sur GitHub"
     @tab = 'githubers'
     respond_to do |format|
@@ -96,8 +96,14 @@ class GithubersController < ApplicationController
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else
-      user = {}
-      user[:pseudo] = githuber.github_login
+      response = client.search index: 'influencers', body: { query: { match: { name: githuber.name } } }
+      result = Hashie::Mash.new response
+      if result.hits.total > 0
+        user = result.hits.hits[0]._source
+      else
+        user = {}
+        user[:pseudo] = githuber.github_login
+      end
     end
     user[:email] = githuber.email if githuber.respond_to?(:email) and githuber.email
     if githuber.respond_to?(:location) and githuber.location and "france".casecmp(githuber.location) != 0

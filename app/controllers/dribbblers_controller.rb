@@ -1,7 +1,7 @@
 class DribbblersController < ApplicationController
 
   def index
-    @dribblers = Dribbler.where(rank: 1).limit(100).order('followers DESC')
+    @dribblers = Dribbler.where(rank: 1).order('followers DESC')
     @title = "Les #{@dribblers.size} freelances francophones les plus suivis sur Dribbble"
     @tab = 'dribbblers'
     respond_to do |format|
@@ -65,8 +65,14 @@ class DribbblersController < ApplicationController
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else
-      user = {}
-      user[:pseudo] = dribbler.username
+      response = client.search index: 'influencers', body: { query: { match: { name: dribbler.name } } }
+      result = Hashie::Mash.new response
+      if result.hits.total > 0
+        user = result.hits.hits[0]._source
+      else
+        user = {}
+        user[:pseudo] = dribbler.username
+      end
     end
     if dribbler.respond_to?(:location) and dribbler.location and "france".casecmp(dribbler.location) != 0
       location = Geocoder.coordinates(dribbler.location)

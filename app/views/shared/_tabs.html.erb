@@ -1,15 +1,19 @@
 <section class="l-tabs">
   <ul>
-    <% if @tab == 'ranking'%>
-    <li class="is-active">
-      <i class="icon ion-android-star"></i>
-    </li>
-    <% else %>
-    <li>
-      <a href="/">
+
+    <% if ENV['new_home'] == '1'%>
+      <% if @tab == 'ranking'%>
+      <li class="is-active">
+
         <i class="icon ion-android-star"></i>
-      </a>
-    </li>
+      </li>
+      <% else %>
+      <li>
+        <a href="/">
+          <i class="icon ion-android-star"></i>
+        </a>
+      </li>
+      <% end %>
     <% end %>
     <% if @tab == 'rockstars'%>
     <li class="is-active">

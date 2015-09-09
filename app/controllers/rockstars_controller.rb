@@ -35,14 +35,14 @@ class RockstarsController < ApplicationController
     rockstars = Rockstar.all()
     client = twlient()
     today = Date.today
-    rockstars = rockstars[rockstars.size / 2, rockstars.size-1] if today.mday % 2 == 0
-    rockstars = rockstars[0, rockstars.size / 2] if today.mday % 2 != 0
+    #rockstars = rockstars[rockstars.size / 2, rockstars.size-1] if today.mday % 2 == 0
+    #rockstars = rockstars[0, rockstars.size / 2] if today.mday % 2 != 0
     rockstars.each do |rockstar|
       begin
-        user = client.user(rockstar.pseudo)
-        if user
-          update_or_create(user, rockstar.rank, rockstar.pseudo)
-        end
+        #user = client.user(rockstar.pseudo)
+        #if user
+        update_or_create(user, rockstar.rank, rockstar.pseudo)
+        #end
       rescue Exception => e
         puts "twitter error => #{rockstar.pseudo}"
         puts e.message  
@@ -50,7 +50,6 @@ class RockstarsController < ApplicationController
       end
     end
   end
-
   protected
 
   def twlient

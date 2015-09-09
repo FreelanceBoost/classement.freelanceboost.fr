@@ -43,9 +43,10 @@ class RockstarsController < ApplicationController
         if user
           update_or_create(user, rockstar.rank, rockstar.pseudo)
         end
-      rescue Exception
+      rescue Exception => e
         puts "twitter error => #{rockstar.pseudo}"
-        puts Exception
+        puts e.message  
+        puts e.backtrace.inspect
       end
     end
   end

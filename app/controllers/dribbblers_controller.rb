@@ -69,12 +69,12 @@ class DribbblersController < ApplicationController
 
   def sync_es(dribbler)
     client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
-    response = client.search index: 'influencers', body: { min_score: 1, query: { match: { pseudo: dribbler.username } } }
+    response = client.search index: 'influencers', body: { min_score: 2, query: { match: { pseudo: dribbler.username } } }
     result =  Hashie::Mash.new response
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else
-      response = client.search index: 'influencers', body: { min_score: 1, query: { match: { name: dribbler.name } } }
+      response = client.search index: 'influencers', body: { min_score: 2, query: { match: { name: dribbler.name } } }
       result = Hashie::Mash.new response
       if result.hits.total > 0
         user = result.hits.hits[0]._source

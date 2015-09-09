@@ -95,15 +95,15 @@ class GithubersController < ApplicationController
 
   def sync_es(githuber)
     client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
-    response = client.search index: 'influencers', body: { min_score: 1, query: { match: { pseudo: githuber.github_login } } }
+    response = client.search index: 'influencers', body: { min_score: 2, query: { match: { pseudo: githuber.github_login } } }
     result = Hashie::Mash.new response
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else
       if githuber.name
-        response = client.search index: 'influencers', body: { min_score: 1, query: { match: { name: githuber.name } } }
+        response = client.search index: 'influencers', body: { min_score: 2, query: { match: { name: githuber.name } } }
       else
-        response = client.search index: 'influencers', body: { min_score: 1, query: { match: { name: githuber.github_login } } }
+        response = client.search index: 'influencers', body: { min_score: 2, query: { match: { name: githuber.github_login } } }
       end
       result = Hashie::Mash.new response
       if result.hits.total > 0

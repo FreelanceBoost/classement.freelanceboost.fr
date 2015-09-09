@@ -104,6 +104,7 @@ class GithubersController < ApplicationController
         response = client.search index: 'influencers', body: { query: { match: { name: githuber.name } } }
       else
         response = client.search index: 'influencers', body: { query: { match: { pseudo: githuber.github_login } } }
+      end
       result = Hashie::Mash.new response
       if result.hits.total > 0
         user = result.hits.hits[0]._source

@@ -97,12 +97,12 @@ class RockstarsController < ApplicationController
 
   def sync_es(rockstar)
     client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
-    response = client.search index: 'influencers', body: { query: { match: { pseudo: rockstar.pseudo } } }
+    response = client.search index: 'influencers', body: { min_score: 0.9, query: { match: { pseudo: rockstar.pseudo } } }
     result = Hashie::Mash.new response
     if result.hits.total > 0
       user = result.hits.hits[0]._source
     else
-      response = client.search index: 'influencers', body: { query: { match: { name: rockstar.name } } }
+      response = client.search index: 'influencers', body: { min_score: 0.9, query: { match: { name: rockstar.name } } }
       result = Hashie::Mash.new response
       if result.hits.total > 0
         user = result.hits.hits[0]._source
@@ -117,6 +117,8 @@ class RockstarsController < ApplicationController
     #end
     if !user[:name]
       user[:name] = rockstar.name
+    else
+      user[:name] = rockstar.pseudo
     end
     user[:twitter] = rockstar
 

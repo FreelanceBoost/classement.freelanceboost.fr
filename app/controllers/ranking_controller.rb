@@ -8,7 +8,7 @@ class RankingController < ApplicationController
           {
             sort: [{ total_followers_count: {order: "desc"}}],
             from: 0,
-            size: 542,
+            size: 300,
             query:
             {
               match_all: { }

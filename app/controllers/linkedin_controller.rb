@@ -89,10 +89,10 @@ class LinkedinController < ApplicationController
       user = {}
       user[:email] = linkedin.email
     end
-    if linkedin.respond_to?(:location) and linkedin.location and "france".casecmp(linkedin.location) != 0
-      location = Geocoder.coordinates(linkedin.location)
-      user[:location] = location.join(',') if location
-    end
+    #if linkedin.respond_to?(:location) and linkedin.location and "france".casecmp(linkedin.location) != 0
+    #  location = Geocoder.coordinates(linkedin.location)
+    #  user[:location] = location.join(',') if location
+    #end
     user[:name] = "#{linkedin.first_name} #{linkedin.last_name}"
     user[:linkedin] = linkedin
 

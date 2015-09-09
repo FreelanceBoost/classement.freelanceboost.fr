@@ -114,12 +114,14 @@ class GithubersController < ApplicationController
       end
     end
     user[:email] = githuber.email if githuber.respond_to?(:email) and githuber.email
-    if githuber.respond_to?(:location) and githuber.location and "france".casecmp(githuber.location) != 0
-      location = Geocoder.coordinates(githuber.location)
-      user[:location] = location.join(',') if location
-    end
+    #if githuber.respond_to?(:location) and githuber.location and "france".casecmp(githuber.location) != 0
+    #  location = Geocoder.coordinates(githuber.location)
+    #  user[:location] = location.join(',') if location
+    #end
     if githuber.respond_to?(:name)
       user[:name] = githuber.name
+    else
+      user[:name] = githuber.github_login
     end
     user[:github] = githuber
 

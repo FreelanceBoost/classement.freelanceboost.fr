@@ -44,7 +44,7 @@ class RockstarsController < ApplicationController
           update_or_create(user, rockstar.rank, rockstar.pseudo)
         end
       rescue Exception
-        puts "error => #{rockstar.pseudo}"
+        puts "twitter error => #{rockstar.pseudo}"
       end
     end
   end
@@ -107,10 +107,10 @@ class RockstarsController < ApplicationController
         user[:pseudo] = rockstar.pseudo
       end
     end
-    if rockstar.respond_to?(:location) and rockstar.location and "france".casecmp(rockstar.location) != 0
-      location = Geocoder.coordinates(rockstar.location)
-      user[:location] = location.join(',') if location
-    end
+    #if rockstar.respond_to?(:location) and rockstar.location and "france".casecmp(rockstar.location) != 0
+      #location = Geocoder.coordinates(rockstar.location)
+      #user[:location] = location.join(',') if location
+    #end
     if !user[:name]
       user[:name] = rockstar.name
     end
@@ -123,6 +123,5 @@ class RockstarsController < ApplicationController
     end
 
   end
-
 
 end

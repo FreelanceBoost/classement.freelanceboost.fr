@@ -36,7 +36,7 @@ class DribbblersController < ApplicationController
           update_or_create(user, dribbbler.rank, dribbbler.username)
         end
       rescue
-        puts "error => #{dribbbler.username}"
+        puts "dribbble error => #{dribbbler.username}"
       end
     end
   end
@@ -78,10 +78,10 @@ class DribbblersController < ApplicationController
         user[:pseudo] = dribbler.username
       end
     end
-    if dribbler.respond_to?(:location) and dribbler.location and "france".casecmp(dribbler.location) != 0
-      location = Geocoder.coordinates(dribbler.location)
-      user[:location] = location.join(',') if location
-    end
+    #if dribbler.respond_to?(:location) and dribbler.location and "france".casecmp(dribbler.location) != 0
+    #  location = Geocoder.coordinates(dribbler.location)
+    #  user[:location] = location.join(',') if location
+    #end
     user[:name] = dribbler.name
     user[:dribbbler] = dribbler
 

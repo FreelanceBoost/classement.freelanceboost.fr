@@ -38,6 +38,15 @@ class LinkedinController < ApplicationController
     update_or_create(client)
   end
 
+  def update
+    users = Linkedin.all()
+    users.each do |user|
+      if user.published
+        sync_es(user)
+      end
+    end
+  end
+
   protected
 
   def get_authorize_url
@@ -50,23 +59,48 @@ class LinkedinController < ApplicationController
     return request_token.authorize_url
   end
 
-  def update_or_create(client)
-    linkedin = Linkedin.find_by linkedin_id: client.profile.id
+  def update_or_create(user)
+    linkedin = Linkedin.find_by linkedin_id: user.profile.id
     if !linkedin
-      linkedin = Linkedin.create(:linkedin_id => client.profile.id)
+      linkedin = Linkedin.create(:linkedin_id => user.profile.id)
       linkedin.published = false
       linkedin.rank = 0
-      linkedin.linkedin_id = client.profile.id
+      linkedin.linkedin_id = user.profile.id
     end
-    linkedin.bio = client.profile.headline
-    linkedin.first_name = client.profile.first_name
-    linkedin.last_name = client.profile.last_name
-    linkedin.location = client.profile(:fields => %w(location)).location.name
-    linkedin.email = client.profile(:fields => %w(email-address)).email_address
-    linkedin.avatar_url = client.picture_urls(:id => client.profile.id).all[0]
-    linkedin.followers_count = client.profile(:fields => %w(num-connections)).num_connections
-    linkedin.num_connections_capped = client.profile(:fields => %w(num-connections-capped)).num_connections_capped
-    linkedin.linkedin_url = client.profile(:fields => %w(public-profile-url)).public_profile_url
+    linkedin.bio = user.profile.headline
+    linkedin.first_name = user.profile.first_name
+    linkedin.last_name = user.profile.last_name
+    linkedin.location = user.profile(:fields => %w(location)).location.name
+    linkedin.email = user.profile(:fields => %w(email-address)).email_address
+    linkedin.avatar_url = user.picture_urls(:id => user.profile.id).all[0]
+    linkedin.followers_count = user.profile(:fields => %w(num-connections)).num_connections
+    linkedin.num_connections_capped = user.profile(:fields => %w(num-connections-capped)).num_connections_capped
+    linkedin.linkedin_url = user.profile(:fields => %w(public-profile-url)).public_profile_url
     linkedin.save
+  end
+
+  def sync_es(linkedin)
+    client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+    response = client.search index: 'influencers', body: { query: { match: { email: linkedin.email } } }
+    result = Hashie::Mash.new response
+    if result.hits.total > 0
+      user = result.hits.hits[0]._source
+    else
+      user = {}
+      user[:email] = linkedin.email
+    end
+    if linkedin.respond_to?(:location) and linkedin.location and "france".casecmp(linkedin.location) != 0
+      location = Geocoder.coordinates(linkedin.location)
+      user[:location] = location.join(',') if location
+    end
+    user[:name] = "#{linkedin.first_name} #{linkedin.last_name}"
+    user[:linkedin] = linkedin
+
+    if result.hits.total > 0
+      client.index  index: 'influencers', type: 'influencer', id: result.hits.hits[0]._id ,body: user
+    else
+      client.index  index: 'influencers', type: 'influencer', body: user
+    end
+
   end
 end

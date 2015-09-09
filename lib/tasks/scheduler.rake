@@ -12,5 +12,11 @@ task :update_tweet => :environment do
   dribbler = DribbblersController.new
   dribbler.update()
 
+  linkedin = LinkedinController.new
+  linkedin.update()
+
+  ranking = RankingController.new
+  ranking.calculate_rank()
+
   puts "done."
 end

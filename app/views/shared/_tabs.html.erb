@@ -1,12 +1,23 @@
 <section class="l-tabs">
   <ul>
+    <% if @tab == 'ranking'%>
+    <li class="is-active">
+      <i class="icon ion-android-star"></i>
+    </li>
+    <% else %>
+    <li>
+      <a href="/">
+        <i class="icon ion-android-star"></i>
+      </a>
+    </li>
+    <% end %>
     <% if @tab == 'rockstars'%>
     <li class="is-active">
       <i class="icon ion-social-twitter"></i><span>Twitter</span>
     </li>
     <% else %>
     <li>
-      <a href="/">
+      <a href="/twitter">
         <i class="icon ion-social-twitter"></i><span>Twitter</span>
       </a>
     </li>
@@ -35,12 +46,12 @@
     <% end %>
     <% if @tab == 'linkedin'%>
     <li class="is-active">
-      <i class="icon ion-social-linkedin"></i><span>LinkedIn</span>
+      <i class="icon ion-social-linkedin"></i><span>Linkedin</span>
     </li>
     <% else %>
     <li>
       <a href="/linkedin">
-        <i class="icon ion-social-linkedin"></i><span>LinkedIn</span>
+        <i class="icon ion-social-linkedin"></i><span>Linkedin</span>
       </a>
     </li>
     <% end %>
@@ -51,3 +62,6 @@
     <h1><%= @title %></h1>
   </div>
 </section>
+<% if Rails.env.development? %>
+  <% console %>
+<% end %>

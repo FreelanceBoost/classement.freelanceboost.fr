@@ -86,6 +86,43 @@ class RockstarsController < ApplicationController
     rockstar.location = user.location
     rockstar.follower_count = user.followers_count
     rockstar.save
+    if rockstar.rank == 1
+      sync_es(rockstar)
+    end
   end
+
+  def sync_es(rockstar)
+    client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+    response = client.search index: 'influencers', body: { query: { match: { pseudo: rockstar.pseudo } } }
+    result = Hashie::Mash.new response
+    if result.hits.total > 0
+      user = result.hits.hits[0]._source
+    else
+      response = client.search index: 'influencers', body: { query: { match: { name: rockstar.name } } }
+      result = Hashie::Mash.new response
+      if result.hits.total > 0
+        user = result.hits.hits[0]._source
+      else
+        user = {}
+        user[:pseudo] = rockstar.pseudo
+      end
+    end
+    if rockstar.respond_to?(:location) and rockstar.location and "france".casecmp(rockstar.location) != 0
+      location = Geocoder.coordinates(rockstar.location)
+      user[:location] = location.join(',') if location
+    end
+    if !user[:name]
+      user[:name] = rockstar.name
+    end
+    user[:twitter] = rockstar
+
+    if result.hits.total > 0
+      client.index  index: 'influencers', type: 'influencer', id: result.hits.hits[0]._id ,body: user
+    else
+      client.index  index: 'influencers', type: 'influencer', body: user
+    end
+
+  end
+
 
 end

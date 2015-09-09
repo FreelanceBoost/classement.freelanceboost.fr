@@ -3,7 +3,7 @@ class DribbblersController < ApplicationController
   def index
 
     @dribblers = Rails.cache.fetch('dribblers', :expires_in => 23.hours) do
-      Dribbler.where(rank: 1).limit(100).order('followers DESC')
+      Dribbler.where(rank: 1).order('followers DESC')
     end
 
     @title = "Les #{@dribblers.size} freelances francophones les plus suivis sur Dribbble"
@@ -57,6 +57,40 @@ class DribbblersController < ApplicationController
     dribbler.location = user.location
     dribbler.followers = user.followers_count
     dribbler.save
+    if dribbler.rank == 1
+      sync_es(dribbler)
+    end
+  end
+
+  def sync_es(dribbler)
+    client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+    response = client.search index: 'influencers', body: { query: { match: { pseudo: dribbler.username } } }
+    result =  Hashie::Mash.new response
+    if result.hits.total > 0
+      user = result.hits.hits[0]._source
+    else
+      response = client.search index: 'influencers', body: { query: { match: { name: dribbler.name } } }
+      result = Hashie::Mash.new response
+      if result.hits.total > 0
+        user = result.hits.hits[0]._source
+      else
+        user = {}
+        user[:pseudo] = dribbler.username
+      end
+    end
+    if dribbler.respond_to?(:location) and dribbler.location and "france".casecmp(dribbler.location) != 0
+      location = Geocoder.coordinates(dribbler.location)
+      user[:location] = location.join(',') if location
+    end
+    user[:name] = dribbler.name
+    user[:dribbbler] = dribbler
+
+    if result.hits.total > 0
+      client.index  index: 'influencers', type: 'influencer', id: result.hits.hits[0]._id ,body: user
+    else
+      client.index  index: 'influencers', type: 'influencer', body: user
+    end
+
   end
 
 end

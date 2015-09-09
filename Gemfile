@@ -29,12 +29,16 @@ gem 'ionicons-rails', '~> 2.0.0'
 gem 'dalli'
 gem 'rack-cache'
 gem 'kgio'
+gem 'geocoder'
 group :production, :staging do
   gem 'sprockets-redirect'
 end
 group :development do
   gem 'guard-livereload'
   gem 'rack-livereload'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
 end
 group :development, :test do
   gem 'sqlite3'
@@ -42,6 +46,5 @@ end
 gem 'activeadmin', github: 'activeadmin'
 gem 'safe_attributes'
 gem 'linkedin'
-gem 'elasticsearch', '~> 1.0'
-
+gem 'elasticsearch'
 ruby '2.2.0'

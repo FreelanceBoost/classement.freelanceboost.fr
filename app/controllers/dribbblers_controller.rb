@@ -33,8 +33,11 @@ class DribbblersController < ApplicationController
       begin
         #user = client.get_user(dribbbler.username)
         #if user
-        update_or_create(user, dribbbler.rank, dribbbler.username)
+        #update_or_create(user, dribbbler.rank, dribbbler.username)
         #end
+        if dribbbler.rank == 1
+          sync_es(dribbbler)
+        end
       rescue Exception => e
         puts "dribbble error => #{dribbbler.username}"
         puts e.message  

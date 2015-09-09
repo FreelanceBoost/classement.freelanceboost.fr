@@ -41,8 +41,11 @@ class RockstarsController < ApplicationController
       begin
         #user = client.user(rockstar.pseudo)
         #if user
-        update_or_create(user, rockstar.rank, rockstar.pseudo)
+        #update_or_create(user, rockstar.rank, rockstar.pseudo)
         #end
+        if rockstar.rank == 1
+          sync_es(rockstar)
+        end
       rescue Exception => e
         puts "twitter error => #{rockstar.pseudo}"
         puts e.message  

@@ -6,6 +6,27 @@
 </section>
 <section class="l-rockstar">
   <div class="l-constrained-small centered">
-	<p>Nous allons maintenant examiner le pseudo que vous nous avez soumis !</p>
+	<p>
+		<div class="l-share-txt" id="twitter-share">
+			<p>Je suis dans le classement des freelances les plus influents sur le web !</p>
+		</div>
+		<script>
+			twttr
+			.widgets
+			.createShareButton('http://classement.freelanceboost.fr/',
+				document.getElementById('twitter-share'),
+				{
+					text: 'Je suis dans le classement des freelances les plus influents sur le web !',
+					count: 'none',
+					url: 'http://classement.freelanceboost.fr/',
+					hashtags: 'freelances',
+					via: 'freelanceboost',
+					size: 'large',
+
+				});
+		</script>
+	</p>
+
+
 	<p>À bientôt sur <a href="http://freelanceboost.fr/">FreelanceBoost</a>.</p>
 </section>

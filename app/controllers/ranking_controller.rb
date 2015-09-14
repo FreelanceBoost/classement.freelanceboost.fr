@@ -2,21 +2,19 @@ class RankingController < ApplicationController
 
   def index
       @tab = 'ranking'
-      #@rockstars = Rails.cache.fetch('allranking', :expires_in => 24.hours) do
-        client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
-        response = client.search index: 'influencers', body:
+      client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+      response = client.search index: 'influencers', body:
+        {
+          sort: [{ total_followers_count: {order: "desc"}}],
+          from: 0,
+          size: 300,
+          query:
           {
-            sort: [{ total_followers_count: {order: "desc"}}],
-            from: 0,
-            size: 300,
-            query:
-            {
-              match_all: { }
-            }
+            match_all: { }
           }
-        @allranking = Hashie::Mash.new response
-      #end
-      @title = "Classement FreelanceBoost des freelances francophones !"
+        }
+      @allranking = Hashie::Mash.new response
+      @title = "Le classement des freelances les plus influents sur le web"
       respond_to do |format|
         format.html
         format.json {

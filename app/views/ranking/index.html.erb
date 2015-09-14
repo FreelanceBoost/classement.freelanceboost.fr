@@ -101,22 +101,22 @@
         <p class="bio">
           <span class='followers'><%= item._source.total_followers_count %> abonnés</span>
           <% if !item._source.linkedin.blank? %>
-            <a href="<%= item._source.linkedin.linkedin_url %>">
+            <a href="<%= item._source.linkedin.linkedin_url %>" rel="nofollow" target="_blank">
               <i class="icon ion-social-linkedin"></i>
             </a>
           <% end %>
           <% if !item._source.github.blank? %>
-            <a href="<%= item._source.github.githuburl  %>">
+            <a href="<%= item._source.github.githuburl  %>" rel="nofollow" target="_blank">
               <i class="icon ion-social-github"></i>
             </a>
           <% end %>
           <% if !item._source.dribbbler.blank? %>
-            <a href="https://dribbble.com/<%= item._source.dribbbler.username %>">
+            <a href="https://dribbble.com/<%= item._source.dribbbler.username %>" rel="nofollow" target="_blank">
               <i class="icon ion-social-dribbble"></i>
             </a>
           <% end %>
           <% if !item._source.twitter.blank? %>
-            <a href="https://twitter.com/intent/follow?screen_name=<%= item._source.pseudo %>">
+            <a href="https://twitter.com/intent/follow?screen_name=<%= item._source.pseudo %>" rel="nofollow" target="_blank">
               <i class="icon ion-social-twitter"></i>
             </a>
           <% end %>

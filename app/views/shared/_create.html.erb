@@ -1,4 +1,4 @@
-<% @title = 'Bien joué !'%>
+<% @title = t('share') %>
 <section class="l-intro">
   <div class="l-constrained-small centered">
     <h1>Bien joué !</h1>
@@ -7,8 +7,11 @@
 <section class="l-rockstar">
   <div class="l-constrained-small centered">
 	<p>
-		<div class="l-share-txt" id="twitter-share">
-			<p>Je suis dans le classement des freelances les plus influents sur le web !</p>
+		<div class="l-share-txt">
+			<div id="twitter-share"><%= t('share') %></div>
+			<div class="fb-share-button"
+        	data-href="http://classement.freelanceboost.fr"
+        	data-layout="button" style="margin: 0;padding: 0;top: -10px;"></div>
 		</div>
 		<script>
 			twttr
@@ -16,15 +19,15 @@
 			.createShareButton('http://classement.freelanceboost.fr/',
 				document.getElementById('twitter-share'),
 				{
-					text: 'Je suis dans le classement des freelances les plus influents sur le web !',
+					text: "<%= t('share') %>",
 					count: 'none',
 					url: 'http://classement.freelanceboost.fr/',
-					hashtags: 'freelances',
-					via: 'freelanceboost',
-					size: 'large',
-
+					hashtags: 'freelance',
+					via: 'freelanceboost'
 				});
 		</script>
+
+
 	</p>
 
 

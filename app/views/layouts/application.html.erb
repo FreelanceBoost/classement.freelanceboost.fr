@@ -3,6 +3,11 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<% if @share %>
+		<meta name="description" content="<%= t('share') %>" />
+	<% else %>
+		<meta name="description" content="<%= t('title') %>" />
+	<% end %>
 	<title><%=@title%> | FreelanceBoost</title>
 	<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
@@ -15,6 +20,11 @@
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="<%=@title%>" />
     <meta property="og:description"   content="<%=@title%>" />
+    <% if @share %>
+		<meta name="og:description" content="<%= t('share') %>" />
+	<% else %>
+		<meta name="og:description" content="<%= t('title') %>" />
+	<% end %>
     <meta property="og:image"         content="http://freelanceboost.fr/wp-content/themes/freelanceboost-blog/img/logo-freelanceboost.png" />
 </head>
 <body>

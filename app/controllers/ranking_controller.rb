@@ -15,6 +15,9 @@ class RankingController < ApplicationController
         }
       @allranking = Hashie::Mash.new response
       @title = "Le classement des freelances les plus influents sur le web"
+      if params['share'] == 'true'
+        @share = true
+      end
       respond_to do |format|
         format.html
         format.json {
@@ -22,6 +25,7 @@ class RankingController < ApplicationController
         }
       end
   end
+
 
   def all
       client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']

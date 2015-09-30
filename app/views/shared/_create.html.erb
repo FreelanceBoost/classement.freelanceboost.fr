@@ -10,18 +10,18 @@
 		<div class="l-share-txt">
 			<div id="twitter-share"><%= t('share') %></div>
 			<div class="fb-share-button"
-        	data-href="http://classement.freelanceboost.fr"
+        	data-href="http://classement.freelanceboost.fr?share=true"
         	data-layout="button" style="margin: 0;padding: 0;top: -10px;"></div>
 		</div>
 		<script>
 			twttr
 			.widgets
-			.createShareButton('http://classement.freelanceboost.fr/',
+			.createShareButton('http://classement.freelanceboost.fr/?share=true',
 				document.getElementById('twitter-share'),
 				{
 					text: "<%= t('share') %>",
 					count: 'none',
-					url: 'http://classement.freelanceboost.fr/',
+					url: 'http://classement.freelanceboost.fr/?share=true',
 					hashtags: 'freelance',
 					via: 'freelanceboost'
 				});

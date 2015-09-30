@@ -1,7 +1,7 @@
 FreelanceboostRanking::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  
+
   if ENV['new_home'] == '1'
     root 'ranking#index'
   else
@@ -9,6 +9,7 @@ FreelanceboostRanking::Application.routes.draw do
   end
 
   get 'twitter' => 'rockstars#index'
+  get 'share' => 'ranking#share'
   get 'all' => 'ranking#index'
   get 'auth/linkedin/callback' => 'linkedin#create'
   get 'auth/linkedin/callback/cancel' => 'linkedin#index'

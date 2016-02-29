@@ -8,8 +8,11 @@ $nprogress-zindex: 10100;
 
 @font-face {
     font-family: 'Big Noodle Titling';
-    src: url("/assets/big_noodle_titling-webfont.eot");
-    src: url("/assets/big_noodle_titling-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/big_noodle_titling-webfont.woff") format("woff"), url("/assets/big_noodle_titling-webfont.ttf") format("truetype"), url("/assets/big_noodle_titling-webfont.svg#bignoodletitlingregular") format("svg");
+    src: font-url("big_noodle_titling-webfont.eot");
+    src: font-url("big_noodle_titling-webfont.eot?#iefix") format("embedded-opentype"),
+         font-url("big_noodle_titling-webfont.woff") format("woff"),
+         font-url("big_noodle_titling-webfont.ttf") format("truetype"),
+         font-url("big_noodle_titling-webfont.svg#bignoodletitlingregular") format("svg");
     font-weight: normal;
     font-style: normal;
 }
